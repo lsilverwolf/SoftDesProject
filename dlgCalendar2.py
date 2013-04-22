@@ -2,7 +2,6 @@ import string, calendar
 import tkinter
 import time
 year = time.localtime()[0]
-print(year)
 month = time.localtime()[1]
 day =time.localtime()[2]
 strdate = (str(year) +  "/" + str(month) + "/" + str(day))
