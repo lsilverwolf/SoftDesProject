@@ -2,6 +2,9 @@ from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
 
+class GUI():
+	def __init__(self, textFile = "schedule.txt")
+
 year = time.localtime()[0]
 month = time.localtime()[1]
 day = time.localtime()[2]
