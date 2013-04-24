@@ -11,6 +11,7 @@ import time
 
 class GUI():
 	def __init__(self, textFile = "schedule.txt"):
+
         self.schedule = textFile
 
     year = time.localtime()[0]
@@ -80,8 +81,6 @@ class GUI():
 
     check1 = Checkbutton(master,text="Submit another",variable=CheckVar1,onvalue=1,offvalue=0).grid(row=6,sticky=W,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=6,sticky=E,column=4,padx=10)
-
-mainloop()
 
 
 print("I got here")
