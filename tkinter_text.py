@@ -16,7 +16,7 @@ def close_window():
 
 def fnCalendar():
     d1 = dlgCal.tkCalendar(master, year, month, day, StringVar())
-    return(strdate)
+    print(dlgCal.tkCalendar.fnClickNumber())
 
 master = Tk()
 v1 = IntVar()
