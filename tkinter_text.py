@@ -2,6 +2,7 @@ from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
 
+master = Tk()
 
 """class GUI():
 	def __init__(self, textFile = "schedule.txt"):
@@ -21,7 +22,7 @@ def fnCalendar():
     d1 = dlgCal.tkCalendar(master, year, month, day, StringVar())
     return(strdate)
 
-master = Tk()
+
 v1 = IntVar()
 v2 = IntVar()
 v3 = IntVar()
@@ -77,6 +78,7 @@ cal3 = Button(master,height=height,width=width, image = photo,command=fnCalendar
 check1 = Checkbutton(master,text="Submit another",variable=CheckVar1,onvalue=1,offvalue=0).grid(row=6,sticky=W,padx=10)
 b1 = Button(master,text="Submit",command=close_window).grid(row=6,sticky=E,column=4,padx=10)
 
+mainloop()
 
 print("I got here")
 print(e1_text)
