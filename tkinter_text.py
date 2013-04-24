@@ -2,9 +2,10 @@ from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
 
+'''
 class GUI():
-	def __init__(self, textFile = "schedule.txt")
-
+	def __init__(self, textFile = "schedule.txt"):
+'''
 year = time.localtime()[0]
 month = time.localtime()[1]
 day = time.localtime()[2]
@@ -15,6 +16,7 @@ def close_window():
 
 def fnCalendar():
     d1 = dlgCal.tkCalendar(master, year, month, day, StringVar())
+    return(strdate)
 
 master = Tk()
 v1 = IntVar()
@@ -33,6 +35,10 @@ e1_text = e1.get()
 
 Label(master,text="Enter Due Date:").grid(row=1,sticky=W)
 e2 = Entry(master)
+'''
+print(dlgCal.tkCalendar())
+e2.insert(0, dlgCal.tkCalendar()) 
+'''
 e2.grid(row=1,column=1,columnspan=5)
 
 Label(master,text="Priority:").grid(row=2,sticky=W)

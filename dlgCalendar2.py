@@ -10,29 +10,6 @@ strdate = (str(year) +  "/" + str(month) + "/" + str(day))
 
 tk = tkinter 
 
-fnta = ("Times", 12)
-fnt = ("Times", 14)
-fntc = ("Times", 18, 'bold')
-
-lang="engl"
-#lang = "span" #else lang="engl"
-
-if lang == "span":
-    #Spanish Options 
-    strtitle = "Calendario"
-    strdays= "Do  Lu  Ma  Mi  Ju  Vi  Sa"
-    dictmonths = {'1':'Ene','2':'Feb','3':'Mar','4':'Abr','5':'May',
-    '6':'Jun','7':'Jul','8':'Ago','9':'Sep','10':'Oct','11':'Nov',
-    '12':'Dic'}
-else :
-    #English Options 
-    strtitle = "Calendar"
-    strdays = "Su  Mo  Tu  We  Th  Fr  Sa"
-    dictmonths = {'1':'Jan','2':'Feb','3':'Mar','4':'Apr','5':'May',
-    '6':'Jun','7':'Jul','8':'Aug','9':'Sep','10':'Oct','11':'Nov',
-    '12':'Dec'}
-
-
 class clsMainFrame(tk.Frame):
     def __init__(self, master):
         self.parent = master
