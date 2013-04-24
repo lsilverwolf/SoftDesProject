@@ -13,17 +13,18 @@ class GUI():
 	def __init__(self, textFile = "schedule.txt"):
         self.schedule = textFile
 
-    year = time.localtime()[0]
-    month = time.localtime()[1]
-    day = time.localtime()[2]
-    strdate = (str(month) +  "/" + str(day) + "/" + str(year))
+
+    self.year = time.localtime()[0]
+    self.month = time.localtime()[1]
+    self.day = time.localtime()[2]
+    self.strdate = (str(self.month) +  "/" + str(self.day) + "/" + str(self.year))
 
     def close_window():
         master.destroy()
 
     def fnCalendar():
-        d1 = dlgCal.tkCalendar(master, year, month, day, StringVar())
-        return(strdate)
+        d1 = dlgCal.tkCalendar(master, self.year, self.month, self.day, StringVar())
+        return(self.strdate)
 
     master = Tk()
     v1 = IntVar()
