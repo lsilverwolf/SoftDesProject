@@ -11,6 +11,7 @@ import time
 
 class GUI():
 	def __init__(self, textFile = "schedule.txt"):
+
         self.schedule = textFile
 
 
@@ -32,6 +33,8 @@ class GUI():
     v3 = IntVar()
     v4 = IntVar()
     v5 = IntVar()
+    CheckVar = IntVar()
+
     master.title("New Task")
 
     Label(master,text="Enter Task:").grid(row=0,sticky=W,)
@@ -51,13 +54,17 @@ class GUI():
 
     Label(master,text="Priority:").grid(row=2,sticky=W)
 
-    Label(master,text="Requested Start Date:").grid(row=3,sticky=W)
-    e3 = Entry(master)
-    e3.grid(row=3,column=1,columnspan=5)
+    Label(master,text="Hours In Task:").grid(row=3,sticky=W)
+    e5 = Entry(master)
+    e5.grid(row=3,column=1,columnspan=5)
 
-    Label(master,text="Requested End Date:").grid(row=4,sticky=W)
+    Label(master,text="Requested Start Date:").grid(row=4,sticky=W)
+    e3 = Entry(master)
+    e3.grid(row=4,column=1,columnspan=5)
+
+    Label(master,text="Requested End Date:").grid(row=5,sticky=W)
     e4 = Entry(master)
-    e4.grid(row=4,column=1,columnspan=5)
+    e4.grid(row=5,column=1,columnspan=5)
 
     Radiobutton(master,text=str(1),variable=v1,value=1).grid(row=2,column=1)
     Radiobutton(master,text=str(2),variable=v1,value=2).grid(row=2,column=2)
@@ -73,9 +80,8 @@ class GUI():
     cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar).grid(row=1,column=6,sticky=W,padx=10)
     cal3 = Button(master,height=height,width=width, image = photo,command=fnCalendar).grid(row=4,column=6,sticky=W,padx=10)
 
-    b1 = Button(master,text="Submit",command=close_window).grid(row=5,sticky=E,column=4,padx=10)
-
-mainloop()
+    check1 = Checkbutton(master,text="Submit another",variable=CheckVar1,onvalue=1,offvalue=0).grid(row=6,sticky=W,padx=10)
+    b1 = Button(master,text="Submit",command=close_window).grid(row=6,sticky=E,column=4,padx=10)
 
 
 print("I got here")

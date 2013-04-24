@@ -157,6 +157,7 @@ class tkCalendar :
                 str(x)) 
             self.update_var.set(strdate)
             self.top.withdraw()
+    return(strdate)
   def fnOnMouseOver(self,event):
     self.canvas.move(tkinter.CURRENT, 1, 1)
     self.canvas.update()
