@@ -1,9 +1,3 @@
-"""Creates a GUI class for user input. It includes
---getNewEvent() to query the user for a new event to add
---displayEvents() to show the user a list of the events already created
-
-"""
-
 from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
@@ -33,7 +27,7 @@ v2 = IntVar()
 v3 = IntVar()
 v4 = IntVar()
 v5 = IntVar()
-CheckVar = IntVar()
+CheckVar1 = IntVar()
 
 master.title("New Task")
 
