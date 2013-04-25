@@ -5,6 +5,7 @@ import time
 global e1_text, e2_text, e3_text, e4_text, e5_text
 
 master = Tk()
+master.title("New Task")    # Title of the GUI
 
 """class GUI():
 	def __init__(self, textFile = "schedule.txt"):
@@ -21,15 +22,17 @@ strdate = (str(month) +  "/" + str(day) + "/" + str(year))
 # Setting variables for the calendar icon
 height = 13
 width = 13
-photo = PhotoImage(file = "cal_icon.gif")
+photo = PhotoImage(file = "cal_icon.gif") # Calendar icon
 
 def close_window():
     # Getting all the information out of the GUI and closing it
-    e1_text = e1.get()
-    e2_text = e2.get()
-    e3_text = e3.get()
-    e4_text = e4.get()
-    e5_text = e5.get()
+    e1_text = e1.get() # Task name information
+    e2_text = e2.get() # Due date information
+    e3_text = e3.get() # Requested start date information
+    e4_text = e4.get() # Requested end date information
+    e5_text = e5.get() # Hours in task information
+
+    # Setting priority
     if v1.get() == 1:
         priority = "1"
     elif v2.get() == 2:
@@ -42,10 +45,14 @@ def close_window():
         priority = "5"
     else:
         priority = None
+
+    # Setting check variable
     if check.get() == 1:
         checkYes = True
     else:
         checkYes = False
+
+    # Closing the window
     master.destroy()
 
 def fnCalendar():
@@ -54,9 +61,6 @@ def fnCalendar():
     return(strdate)
 
 check = IntVar()
-
-# Title of the GUI
-master.title("New Task")
 
 ########## Task entry ##########
 Label(master,text="Enter Task:").grid(row=0,sticky=W,)
