@@ -1,11 +1,16 @@
 from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
+import tkinter
+import tkCalendar
 
 global e1_text, e2_text, e3_text, e4_text, e5_text
 
+tk = tkinter
 master = Tk()
 master.title("New Task")    # Title of the GUI
+
+
 
 """class GUI():
 	def __init__(self, textFile = "schedule.txt"):
@@ -31,6 +36,9 @@ def close_window():
     e3_text = e3.get() # Requested start date information
     e4_text = e4.get() # Requested end date information
     e5_text = e5.get() # Hours in task information
+    
+    date = tkCalendar.tkCalendar.printstrdate()
+    print(date)
 
     # Setting priority
     if v1.get() == 1:
@@ -54,11 +62,9 @@ def close_window():
 
     # Closing the window
     master.destroy()
-
-def fnCalendar():
-    # Opening the calendar
-    d1 = dlgCal.tkCalendar(master, year, month, day, StringVar())
-    return(strdate)
+    
+def fnCalendar(field):
+    tkCalendar.tkCalendar(master, year, month, day, tk.StringVar()) 
 
 check = IntVar()
 
@@ -72,11 +78,7 @@ e1.grid(row=0,column=1,columnspan=5)
 Label(master,text="Enter Due Date:").grid(row=1,sticky=W)
 e2_entry = StringVar()
 e2 = Entry(master,textvariable=e2_entry)
-cal1 = Button(master,height=height,width=width, image = photo,command=fnCalendar).grid(row=3,column=5,sticky=W,padx=10)
-'''
-print(dlgCal.tkCalendar())
-e2.insert(0, dlgCal.tkCalendar()) 
-'''
+cal1 = Button(master,height=height,width=width, image = photo,command=fnCalendar(e2)).grid(row=3,column=5,sticky=W,padx=10)
 e2.grid(row=1,column=1,columnspan=5)
 
 ########## Priority entry ##########
@@ -105,14 +107,14 @@ Label(master,text="Requested Start Date:").grid(row=4,sticky=W)
 e3_entry = StringVar()
 e3 = Entry(master,textvariable=e3_entry)
 e3.grid(row=4,column=1,columnspan=5)
-cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar).grid(row=1,column=5,sticky=W,padx=10)
+cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar(e3)).grid(row=1,column=5,sticky=W,padx=10)
 
 ########## Requested end date ##########
 Label(master,text="Requested End Date:").grid(row=5,sticky=W)
 e4_entry = StringVar()
 e4 = Entry(master,textvariable=e4_entry)
 e4.grid(row=5,column=1,columnspan=5)
-cal3 = Button(master,height=height,width=width, image = photo,command=fnCalendar).grid(row=4,column=5,sticky=W,padx=10)
+cal3 = Button(master,height=height,width=width, image = photo,command=fnCalendar(e4)).grid(row=4,column=5,sticky=W,padx=10)
 
 ########## Buttons ##########
 #Check button if you want to enter another task immediately

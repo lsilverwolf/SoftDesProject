@@ -15,7 +15,7 @@ class clsMainFrame(tk.Frame):
         self.parent = master
         tk.Frame.__init__(master)
         self.date_var = tk.StringVar()
-        self.date_var.set(strdate)        
+        self.date_var.set(strdate)
         label = tk.Label(master, textvariable= self.date_var, bg = "white")
         label.pack(side="top")
         testBtn = tk.Button(master, text = 'getdate',command = self.fnCalendar)
@@ -26,6 +26,7 @@ class clsMainFrame(tk.Frame):
 
     def fnCalendar(self):
         tkCalendar(self.parent, year, month, day, self.date_var)
+
     
 if __name__ == '__main__':
     root =tk.Tk()

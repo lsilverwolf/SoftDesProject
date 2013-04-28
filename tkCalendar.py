@@ -152,12 +152,12 @@ class tkCalendar :
     for x in owntags:
         if (x == "current") or (x == "DayButton"): pass
         else : 
+            global strdate
             strdate = (str(self.year_var.get()) + "/" + 
                 str(self.intmonth) + "/" +  
                 str(x)) 
             self.update_var.set(strdate)
             self.top.withdraw()
-    return(strdate)
   def fnOnMouseOver(self,event):
     self.canvas.move(tkinter.CURRENT, 1, 1)
     self.canvas.update()
@@ -165,3 +165,6 @@ class tkCalendar :
   def fnOnMouseOut(self,event):
     self.canvas.move(tkinter.CURRENT, -1, -1)
     self.canvas.update()
+    
+  def printstrdate():
+    return(strdate)
