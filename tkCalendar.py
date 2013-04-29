@@ -9,6 +9,8 @@ dictmonths = {'1':'Jan','2':'Feb','3':'Mar','4':'Apr','5':'May',
 fnta = ("Times", 12)
 fnt = ("Times", 14)
 fntc = ("Times", 18, 'bold')
+global strdate
+strdate = ""
 
 class tkCalendar :
   def __init__ (self, master, arg_year, arg_month, arg_day, 
@@ -166,5 +168,5 @@ class tkCalendar :
     self.canvas.move(tkinter.CURRENT, -1, -1)
     self.canvas.update()
     
-  def printstrdate():
+  def printstrdate(self):
     return(strdate)
