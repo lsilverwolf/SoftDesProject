@@ -1,12 +1,11 @@
 from tkinter import *
 import dlgCalendar2 as dlgCal
 import time
-import tkinter
+
 import tkCalendar
 
 global e1_text, e2_text, e3_text, e4_text, e5_text
 
-tk = tkinter
 master = Tk()
 master.title("New Task")    # Title of the GUI
 
@@ -63,21 +62,21 @@ def close_window():
     master.destroy()
      
 def fnCalendar1():
-    calendar1 = tkCalendar.tkCalendar(master, year, month, day, tk.StringVar()) 
+    calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar()) 
     date1 = calendar1.printstrdate
     if date1 is not "":
         date_1 = date1()
         e3.insert(0, date_1)
     
 def fnCalendar2():
-    calendar2 = tkCalendar.tkCalendar(master, year, month, day, tk.StringVar())
+    calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
     date2 = calendar2.printstrdate
     if date2() is not "":
         date_2 = date2()
         e2.insert(0, date_2)
     
 def fnCalendar3():
-    calendar3 = tkCalendar.tkCalendar(master, year, month, day, tk.StringVar())
+    calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
     date3 = calendar3.printstrdate
     if date3 is not "":
         date_3 = date3()
