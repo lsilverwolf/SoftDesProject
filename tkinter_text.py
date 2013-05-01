@@ -1,5 +1,6 @@
 from tkinter import *
 import time
+import pickle
 from lifesorter import *
 
 import tkCalendar
