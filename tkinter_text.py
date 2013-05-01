@@ -68,14 +68,14 @@ def CreateGUI():
         date1 = calendar1.getstrdate
         if date1 is not "":
             date_1 = date1()
-            e3.insert(0, date_1)
+            e2.insert(0, date_1)
         
     def fnCalendar2():
         calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date2 = calendar2.getstrdate
         if date2() is not "":
             date_2 = date2()
-            e2.insert(0, date_2)
+            e3.insert(0, date_2)
         
     def fnCalendar3():
         calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
