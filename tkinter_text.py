@@ -1,5 +1,4 @@
 from tkinter import *
-import dlgCalendar2 as dlgCal
 import time
 from lifesorter import *
 
@@ -66,28 +65,24 @@ def CreateGUI():
 
     def fnCalendar1():
         calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())     
-        while calendar1:
-            date1 = calendar1.getstrdate
-            if date1 is not "":
-                date_1 = date1()
-                e3.insert(0, date_1)
+        date1 = calendar1.getstrdate
+        if date1 is not "":
+            date_1 = date1()
+            e3.insert(0, date_1)
         
     def fnCalendar2():
         calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        
-        while calendar2:
-            date2 = calendar2.getstrdate
-            if date2() is not "":
-                date_2 = date2()
-                e2.insert(0, date_2)
+        date2 = calendar2.getstrdate
+        if date2() is not "":
+            date_2 = date2()
+            e2.insert(0, date_2)
         
     def fnCalendar3():
         calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        while calendar3:
-            date3 = calendar3.getstrdate
-            if date3 is not "":
-                date_3 = date3()
-                e4.insert(0, date_3)
+        date3 = calendar3.getstrdate
+        if date3 is not "":
+            date_3 = date3()
+            e4.insert(0, date_3)
 
     check = IntVar()
 
@@ -205,4 +200,3 @@ def main():
         info = CreateGUI()
         modYes = info[6]
         prevInfo.modifyEvents(info)
-
