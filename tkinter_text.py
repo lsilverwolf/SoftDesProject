@@ -175,7 +175,7 @@ def FirstGUI():
     
 
 def main():
-    prevInfo = None #Nick's info from file
+    prevInfo = ["task"] #Nick's info from file
     myLife = Lifesorter(prevInfo)
 
     ########## File stuff ##########
