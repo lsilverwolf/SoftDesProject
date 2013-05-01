@@ -1,5 +1,4 @@
 from tkinter import *
-import dlgCalendar2 as dlgCal
 import time
 from lifesorter import *
 
@@ -180,7 +179,7 @@ def FirstGUI():
     
 
 def main():
-    prevInfo = #Nick's info from file
+    prevInfo = None #Nick's info from file
     myLife = Lifesorter(prevInfo)
 
     ########## File stuff ##########
@@ -205,4 +204,6 @@ def main():
         info = CreateGUI()
         modYes = info[6]
         myLife.modifyEvents(info)
+
+main()
 
