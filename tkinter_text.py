@@ -178,9 +178,6 @@ def main():
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
 
-    prevInfo = ["task"] #Nick's info from file
-    myLife = Lifesorter(prevInfo)
-
     ########## Load Using Pickle ##########
     try:
         prevInfo = pickle.load(open( "save.p", "rb"))
