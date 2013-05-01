@@ -175,8 +175,8 @@ def FirstGUI():
     
 
 def main():
-    prevInfo = Lifesorter(["task"])
-    print(prevInfo)
+    prevInfo = None #Nick's info from file
+    myLife = Lifesorter(prevInfo)
 
     ########## File stuff ##########
 
@@ -194,9 +194,11 @@ def main():
     while createYes == True:
         info = CreateGUI()
         createYes = info[6]
-        prevInfo.addEvents(info)
+        myLife.addEvents(info)
 
     while modYes == True:
         info = CreateGUI()
         modYes = info[6]
-        prevInfo.modifyEvents(info)
+        myLife.modifyEvents(info)
+        
+main()
