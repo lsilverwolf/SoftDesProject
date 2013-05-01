@@ -25,6 +25,7 @@ class tkCalendar :
     self.canvas.create_rectangle(0,0,303,30, fill="#a4cae8",width=0 )
     self.canvas.create_text(100,17, text=strtitle,  font=fntc, fill="#2024d6")
     stryear = str(arg_year)
+    self.strdate=tkinter.StringVar()
 
     self.year_var=tkinter.StringVar()
     self.year_var.set(stryear)
@@ -154,8 +155,7 @@ class tkCalendar :
     for x in owntags:
         if (x == "current") or (x == "DayButton"): pass
         else : 
-            global strdate
-            strdate = (str(self.year_var.get()) + "/" + 
+            self.strdate = (str(self.year_var.get()) + "/" + 
                 str(self.intmonth) + "/" +  
                 str(x)) 
             self.update_var.set(strdate)
@@ -168,5 +168,5 @@ class tkCalendar :
     self.canvas.move(tkinter.CURRENT, -1, -1)
     self.canvas.update()
     
-  def printstrdate(self):
-    return(strdate)
+  def getstrdate(self):
+    return(self.strdate)
