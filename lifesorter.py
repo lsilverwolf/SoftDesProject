@@ -22,6 +22,9 @@ import datetime
 class Lifesorter:
     def __init__(self,events=[]):
         self.events = events
+
+    def __str__(self):
+        return str(self.events)
         
     def sortEvents(self):
         #sortEvents sorts the events based on the given priority
