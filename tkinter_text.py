@@ -180,12 +180,16 @@ def FirstGUI():
     
 
 def main():
-    prevInfo = #Nick's info from file
+    #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
+    #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
+
+    ########## Load Using Pickle ##########
+    try:
+        prevInfo = pickle.load(open( "save.p", "rb"))
+    except:
+        prevInfo = []
+
     myLife = Lifesorter(prevInfo)
-
-    ########## File stuff ##########
-
-
 
     action = FirstGUI()
     if action == "create":
@@ -206,3 +210,25 @@ def main():
         modYes = info[6]
         myLife.modifyEvents(info)
 
+    ########## Save Using Pickle ##########
+    myLifeEvents = myLife.getEvents()
+    pickle.dump(myLifeEvents, open("save.p", "wb"))
+
+main() ### RUN ALL THE THINGS ###
+
+#                         ,,
+#                         ';;
+#                          ''
+#            ____          ||
+#           ;    \         ||
+#            \,---'-,-,    ||
+#            /     (  o)   ||
+#          (o )__,--'-' \  ||
+#,,,,       ;'uuuuu''   ) ;;
+#\   \      \ )      ) /\//
+# '--'       \'nnnnn' /  \
+#   \\      //'------'    \
+#    \\    //  \           \
+#     \\  //    )           )
+#      \\//     |           |
+#       \\     /            |
