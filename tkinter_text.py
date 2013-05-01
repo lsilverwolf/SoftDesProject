@@ -1,5 +1,6 @@
 from tkinter import *
 import time
+import pickle
 from lifesorter import *
 
 import tkCalendar
@@ -67,14 +68,14 @@ def CreateGUI():
         date1 = calendar1.getstrdate
         if date1 is not "":
             date_1 = date1()
-            e3.insert(0, date_1)
+            e2.insert(0, date_1)
         
     def fnCalendar2():
         calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date2 = calendar2.getstrdate
         if date2() is not "":
             date_2 = date2()
-            e2.insert(0, date_2)
+            e3.insert(0, date_2)
         
     def fnCalendar3():
         calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
@@ -329,7 +330,15 @@ def FirstGUI():
     
 
 def main():
-    prevInfo = ["task"] #Nick's info from file
+    #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
+    #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
+
+    ########## Load Using Pickle ##########
+    try:
+        prevInfo = pickle.load(open( "save.p", "rb"))
+    except:
+        prevInfo = []
+
     myLife = Lifesorter(prevInfo)
 
     action = FirstGUI()
@@ -351,6 +360,25 @@ def main():
         modYes = info[6]
         myLife.modifyEvents(info)
 
-main()
+    ########## Save Using Pickle ##########
+    myLifeEvents = myLife.getEvents()
+    pickle.dump(myLifeEvents, open("save.p", "wb"))
 
+main() ### RUN ALL THE THINGS ###
 
+#                         ,,
+#                         ';;
+#                          ''
+#            ____          ||
+#           ;    \         ||
+#            \,---'-,-,    ||
+#            /     (  o)   ||
+#          (o )__,--'-' \  ||
+#,,,,       ;'uuuuu''   ) ;;
+#\   \      \ )      ) /\//
+# '--'       \'nnnnn' /  \
+#   \\      //'------'    \
+#    \\    //  \           \
+#     \\  //    )           )
+#      \\//     |           |
+#       \\     /            |
