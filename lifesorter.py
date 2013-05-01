@@ -46,7 +46,7 @@ class Lifesorter:
         #modifyEvents takes a modified event from the user and incorporates 
         #it into the events list
         task = modEvent[0] #to match the modified task to an existing one
-        for i in events: #find the task to be modified
+        for i in range(len(self.events)): #find the task to be modified
             if self.events[i][0] == task:
                 self.events[i] = modEvent
         return self.events
