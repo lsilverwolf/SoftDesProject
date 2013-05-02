@@ -9,8 +9,6 @@ dictmonths = {'1':'Jan','2':'Feb','3':'Mar','4':'Apr','5':'May',
 fnta = ("Times", 12)
 fnt = ("Times", 14)
 fntc = ("Times", 18, 'bold')
-global strdate
-strdate = ""
 
 class tkCalendar :
   def __init__ (self, master, arg_year, arg_month, arg_day, 
@@ -25,7 +23,7 @@ class tkCalendar :
     self.canvas.create_rectangle(0,0,303,30, fill="#a4cae8",width=0 )
     self.canvas.create_text(100,17, text=strtitle,  font=fntc, fill="#2024d6")
     stryear = str(arg_year)
-    self.strdate=tkinter.StringVar()
+    self.strdate="5/10/2013"
 
     self.year_var=tkinter.StringVar()
     self.year_var.set(stryear)
@@ -158,7 +156,7 @@ class tkCalendar :
             self.strdate = (str(self.year_var.get()) + "/" + 
                 str(self.intmonth) + "/" +  
                 str(x)) 
-            self.update_var.set(strdate)
+            self.update_var.set(self.strdate)
             self.top.withdraw()
   def fnOnMouseOver(self,event):
     self.canvas.move(tkinter.CURRENT, 1, 1)
