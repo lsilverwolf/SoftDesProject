@@ -149,27 +149,14 @@ def SearchTaskGUI():
 
     def close_window():
         # Getting all the information out of the GUI
-        global searchTerm
-        searchTerm = searching.get()
         # Closing the window
         master.destroy()
-
-    def dropdown():
-        def print_it():
-            print(mySearch.get())
-        options = ["a", "b", "c"]
-        mySearch = StringVar()
-        mySearch.set("mow")
-        OptionMenu(master,mySearch,options,command=print_it)
-
+    global searchTerm
+    mySearch = StringVar(master)
     Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
-    search_entry = StringVar()
-    searching = Entry(master,textvariable=search_entry)
-    searching.grid(row=0,column=1)
-    searchMenu = Button(master,text="...",command=dropdown).grid(row=0,column=2,sticky=E,padx=10)
-
-    b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=2,padx=10)
-
+    option = OptionMenu(master,mySearch,"a","b","c").grid(row=0,column=1,sticky=E,padx=10)
+    b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
+    searchTerm = mySearch.get()
     mainloop()
     return searchTerm
 
@@ -189,36 +176,8 @@ def ModGUI(search):
 
     def close_window():
         # Getting all the information out of the GUI
-        e1_text = e1.get() # Task name information
-        e2_text = e2.get() # Due date information
-        e3_text = e3.get() # Requested start date information
-        e4_text = e4.get() # Requested end date information
-        e5_text = e5.get() # Hours in task information
-        
-        
-
-        # Setting priority
-        if v1.get() == 1:
-            priority = "1"
-        elif v2.get() == 2:
-            priority = "2"
-        elif v3.get() == 3:
-            priority = "3"
-        elif v4.get() == 4:
-            priority = "4"
-        elif v5.get() == 5:
-            priority = "5"
-        else:
-            priority = None
 
         # Setting check variable
-        if check.get() == 1:
-            checkYes = True
-        else:
-            checkYes = False
-        global newEvent
-        newEvent = [e1_text, e2_text, priority, e5_text, e3_text, e4_text, checkYes]
-        # Closing the window
         master.destroy()
 
     def fnCalendar1():
@@ -246,9 +205,9 @@ def ModGUI(search):
 
     ########## Task entry ##########
     Label(master,text="Enter Task:").grid(row=0,sticky=W)
-    e1_entry = StringVar()
-    e1 = Entry(master,textvariable=e1_entry,state=DISABLED)
-    e1.grid(row=0,column=1,columnspan=5)
+    v = StringVar()
+    e1 = Entry(master,state=DISABLED, textvariable=v).grid(row=0,column=1,columnspan=5)
+    v.set(searchTerm)
 
     ########## Due date entry ##########
     Label(master,text="Enter Due Date:").grid(row=1,sticky=W)
