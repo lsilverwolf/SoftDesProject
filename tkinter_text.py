@@ -64,25 +64,26 @@ def CreateGUI():
         master.destroy()
 
     def fnCalendar1():
-        calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())     
-        date1 = calendar1.getstrdate
+        calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
+        date1 = calendar1.getstrdate()
         if date1 is not "":
-            date_1 = date1()
-            e2.insert(0, date_1)
+            date_1 = date1
+
+
         
     def fnCalendar2():
         calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date2 = calendar2.getstrdate
         if date2() is not "":
             date_2 = date2()
-            e3.insert(0, date_2)
+
         
     def fnCalendar3():
         calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date3 = calendar3.getstrdate
         if date3 is not "":
             date_3 = date3()
-            e4.insert(0, date_3)
+
 
     check = IntVar()
 
@@ -98,6 +99,7 @@ def CreateGUI():
     e2 = Entry(master,textvariable=e2_entry)
     cal1 = Button(master,height=height,width=width, image = photo,command=fnCalendar1).grid(row=1,column=5,sticky=W,padx=10)
     e2.grid(row=1,column=1,columnspan=5)
+    e2.insert(0, 'mm/dd/yyyy')
 
     ########## Priority entry ##########
     Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
@@ -126,6 +128,7 @@ def CreateGUI():
     e3 = Entry(master,textvariable=e3_entry)
     e3.grid(row=4,column=1,columnspan=5)
     cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar2).grid(row=4,column=5,sticky=W,padx=10)
+    e3.insert(0, 'mm/dd/yyyy')
 
     ########## Requested end date ##########
     Label(master,text="Requested End Date:").grid(row=5,sticky=W)
@@ -133,6 +136,7 @@ def CreateGUI():
     e4 = Entry(master,textvariable=e4_entry)
     e4.grid(row=5,column=1,columnspan=5)
     cal3 = Button(master,height=height,width=width, image=photo,command=fnCalendar3).grid(row=5,column=5,sticky=W,padx=10)
+    e4.insert(0, 'mm/dd/yyyy')
 
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
@@ -222,25 +226,24 @@ def ModGUI(search):
         master.destroy()
 
     def fnCalendar1():
-        calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())     
-        date1 = calendar1.getstrdate
+        calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
+        date1 = calendar1.getstrdate()
         if date1 is not "":
-            date_1 = date1()
-            e3.insert(0, date_1)
-        
+            date_1 = date1
+            
+    
     def fnCalendar2():
         calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date2 = calendar2.getstrdate
         if date2() is not "":
             date_2 = date2()
-            e2.insert(0, date_2)
+
         
     def fnCalendar3():
         calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date3 = calendar3.getstrdate
         if date3 is not "":
             date_3 = date3()
-            e4.insert(0, date_3)
 
     check = IntVar()
 
@@ -256,6 +259,7 @@ def ModGUI(search):
     e2 = Entry(master,textvariable=e2_entry)
     cal1 = Button(master,height=height,width=width, image = photo,command=fnCalendar1).grid(row=1,column=5,sticky=W,padx=10)
     e2.grid(row=1,column=1,columnspan=5)
+    e2.insert(0, 'mm/dd/yyyy')
 
     ########## Priority entry ##########
     Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
@@ -283,7 +287,8 @@ def ModGUI(search):
     e3_entry = StringVar()
     e3 = Entry(master,textvariable=e3_entry)
     e3.grid(row=4,column=1,columnspan=5)
-    cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar2).grid(row=4,column=5,sticky=W,padx=10)
+    cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar1).grid(row=4,column=5,sticky=W,padx=10)
+    e3.insert(0, 'mm/dd/yyyy')
 
     ########## Requested end date ##########
     Label(master,text="Requested End Date:").grid(row=5,sticky=W)
@@ -291,6 +296,7 @@ def ModGUI(search):
     e4 = Entry(master,textvariable=e4_entry)
     e4.grid(row=5,column=1,columnspan=5)
     cal3 = Button(master,height=height,width=width, image=photo,command=fnCalendar3).grid(row=5,column=5,sticky=W,padx=10)
+    e4.insert(0, 'mm/dd/yyyy')
 
     ########## Buttons ##########
     #Check button if you want to enter another task immediately

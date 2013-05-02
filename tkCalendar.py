@@ -23,7 +23,7 @@ class tkCalendar :
     self.canvas.create_rectangle(0,0,303,30, fill="#a4cae8",width=0 )
     self.canvas.create_text(100,17, text=strtitle,  font=fntc, fill="#2024d6")
     stryear = str(arg_year)
-    self.strdate="5/10/2013"
+    self.strdate="mm/dd/yyyy"
 
     self.year_var=tkinter.StringVar()
     self.year_var.set(stryear)
@@ -141,7 +141,7 @@ class tkCalendar :
             else :
                 tagNumber = tuple((self.tagBaseNumber,stritem))
                 self.canvas.create_text(xpos, ypos , text=stritem, 
-                font=fnta,tags=tagNumber)    
+                font=fnta,tags=tagNumber) 
                 xpos += 27
         intposarr += 1
     self.canvas.tag_bind ("DayButton", "<ButtonRelease-1>", self.fnClickNumber)
@@ -158,6 +158,7 @@ class tkCalendar :
                 str(x)) 
             self.update_var.set(self.strdate)
             self.top.withdraw()
+            self.getstrdate()
   def fnOnMouseOver(self,event):
     self.canvas.move(tkinter.CURRENT, 1, 1)
     self.canvas.update()
