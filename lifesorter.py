@@ -78,3 +78,28 @@ class Lifesorter:
         #getTop sorts the events list and returns the first thing to do
         sortEvents(self)
         return self.events[0]
+
+    def searchEvents(self, searchTerm, index=-1):
+        #Searches through the events to find the given searchTerm
+        #Returns the event list
+        #if index is -1, the search function will search through every index
+        #if index is specified, the search function will only look at that index of the events
+        #0)task 
+        #1)due date
+        #2)priority 
+        #3)hoursInTask
+        #4)start date
+        #5)end date
+        #6)sortingRank
+        if index == -1 or index > 6):
+            # Serch through every index of the events
+            
+
+        else:
+            # Search through only the given index in the events
+            sortEvents(self)
+            for n in range(0,len(self.events)):
+                curr = self.events[n][index]
+
+if __name__ = "__main__":
+    ### USE ME FOR DEBUGGING ###

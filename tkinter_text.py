@@ -329,7 +329,8 @@ def main():
     myLifeEvents = myLife.getEvents()
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
-main() ### RUN ALL THE THINGS ###
+if __name__ == "__main__":
+    main() ### RUN ALL THE THINGS ###
 
 #                         ,,
 #                         ';;
