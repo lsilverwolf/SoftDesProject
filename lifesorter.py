@@ -70,19 +70,26 @@ class Lifesorter:
         #prepareSort finds the rankings of each event, based on due date and
         #priority level
         todayDate = datetime.date.today() #gets today's date
+<<<<<<< HEAD
         for i in range(0,len(self.events)):
             event = self.events[i]
+=======
+        for i in self.events:
+            event = i
+            eventIndex = self.events.index(i)
+>>>>>>> d488fef85fa42876e09e845944f58e469756ca95
             priority = event[2] #user given priority
+            dueDate = event[1]
             daysLeft = dueDate - todayDate #how many days until it's due
             daysLeft = daysLeft.days
             sortingRank = daysLeft + int(priority) #ranks the task based on priority 
                 #and how many days are left before it's due
-            if daysLeft == 1: #gives higher rank to tasks that are due now, regardless of priority
+            if daysLeft == 0: #gives higher rank to tasks that are due now, regardless of priority
                 sortingRank -= 4
-            if daysLeft == 2:
+            if daysLeft == 1:
                 sortingRank -= 2
-            event += sortingRank #adds the rank to the current event
-            self.events[i] = event
+            event[6] += sortingRank #adds the rank to the current event
+            self.events[eventIndex] = event
         return self.events
 
     def getTop(self):
@@ -123,6 +130,7 @@ if __name__ == "__main__":
     ########## USE ME FOR DEBUGGING ##########
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
+
     dueDate = datetime.date(13,5,12)
     testLifesorter = Lifesorter(["test1", dueDate, 1, 4, 1])
 
