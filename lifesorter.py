@@ -1,6 +1,6 @@
 """
 Creates the Lifesorter class with sort, add, remove, modify, get,
-prepareSort, and getTop methods.
+prepareSort, getTop and search methods.
 
 sortEvents sorts the events based on the given priority
 addEvents adds a newEvent, defined by the user
@@ -11,6 +11,7 @@ getEvents returns the events list
 prepareSort finds the rankings of each event, based on due date and
     priority level
 getTop sorts the events list and returns the first thing to do
+search finds a given string in any cell or the cell column selected
 
 """
 
@@ -21,7 +22,8 @@ import datetime
 
 class Lifesorter:
     def __init__(self,events=[]):
-        self.events = events
+        self.events = []
+        self.events.append(events)
 
     def __str__(self):
         return str(self.events)
@@ -34,7 +36,7 @@ class Lifesorter:
 
     def addEvents(self,newEvent):
         #addEvents adds a newEvent, defined by the user
-        self.events += newEvent
+        self.events.append(newEvent)
         return self.events
 
     def removeEvents(self,rmEvent):
@@ -91,8 +93,9 @@ class Lifesorter:
         #4)start date
         #5)end date
         #6)sortingRank
-        if index == -1 or index > 6):
+        if index == -1 or index > 6:
             # Serch through every index of the events
+            return 0
             
 
         else:
@@ -102,4 +105,22 @@ class Lifesorter:
                 curr = self.events[n][index]
 
 if __name__ == "__main__":
-    ### USE ME FOR DEBUGGING ###
+    ########## USE ME FOR DEBUGGING ##########
+    #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
+    #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
+    dueDate = datetime.date(13,5,12)
+    startDate = datetime.date(13,5,10)
+    endDate = datetime.date(13,5,12)
+    testLifesorter = Lifesorter(["test1", dueDate, 1, 4, startDate, endDate, 1])
+
+    dueDate = datetime.date(13,5,13)
+    startDate = datetime.date(13,5,11)
+    endDate = datetime.date(13,5,13)
+    testLifesorter.addEvents(["test2", dueDate, 2, 3, startDate, endDate, 2])
+
+    dueDate = datetime.date(13,5,14)
+    startDate = datetime.date(13,5,12)
+    endDate = datetime.date(13,5,14)
+    testLifesorter.addEvents(["test3", dueDate, 3, 2, startDate, endDate, 3])
+    
+    print(testLifesorter.getEvents())
