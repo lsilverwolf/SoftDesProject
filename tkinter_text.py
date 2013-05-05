@@ -5,7 +5,7 @@ from lifesorter import *
 
 import tkCalendar
 
-global e1_text, e2_text, e3_text, e4_text, e5_text, newEvent, action, searchTerm
+global e1_text, e2_text, e3_text, e4_text, e5_text, newEvent, modEvent, action, searchTerm
 
 def CreateGUI():
     master = Tk()
@@ -33,8 +33,6 @@ def CreateGUI():
         # Getting all the information out of the GUI
         e1_text = e1.get() # Task name information
         e2_text = e2.get() # Due date information
-        e3_text = e3.get() # Requested start date information
-        e4_text = e4.get() # Requested end date information
         e5_text = e5.get() # Hours in task information
         
         
@@ -59,7 +57,7 @@ def CreateGUI():
         else:
             checkYes = False
         global newEvent
-        newEvent = [e1_text, e2_text, priority, e5_text, e3_text, e4_text, checkYes]
+        newEvent = [e1_text, e2_text, priority, e5_text, checkYes]
         # Closing the window
         master.destroy()
 
@@ -67,24 +65,8 @@ def CreateGUI():
         calendar1 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
         date1 = calendar1.getstrdate()
         if date1 is not "":
-            date_1 = date1
-
-
-        
-    def fnCalendar2():
-        calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        date2 = calendar2.getstrdate
-        if date2() is not "":
-            date_2 = date2()
-
-        
-    def fnCalendar3():
-        calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        date3 = calendar3.getstrdate
-        if date3 is not "":
-            date_3 = date3()
-
-
+            date_1 = date1    
+    
     check = IntVar()
 
     ########## Task entry ##########
@@ -122,22 +104,6 @@ def CreateGUI():
     e5 = Entry(master,textvariable=e5_entry)
     e5.grid(row=3,column=1,columnspan=5)
 
-    ########## Requested start date entry ##########
-    Label(master,text="Requested Start Date:").grid(row=4,sticky=W)
-    e3_entry = StringVar()
-    e3 = Entry(master,textvariable=e3_entry)
-    e3.grid(row=4,column=1,columnspan=5)
-    cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar2).grid(row=4,column=5,sticky=W,padx=10)
-    e3.insert(0, 'mm/dd/yyyy')
-
-    ########## Requested end date ##########
-    Label(master,text="Requested End Date:").grid(row=5,sticky=W)
-    e4_entry = StringVar()
-    e4 = Entry(master,textvariable=e4_entry)
-    e4.grid(row=5,column=1,columnspan=5)
-    cal3 = Button(master,height=height,width=width, image=photo,command=fnCalendar3).grid(row=5,column=5,sticky=W,padx=10)
-    e4.insert(0, 'mm/dd/yyyy')
-
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
     Checkbutton(master,text="Submit another",variable=check,onvalue=1,offvalue=0).grid(row=6,sticky=W,padx=10)
@@ -153,14 +119,18 @@ def SearchTaskGUI():
 
     def close_window():
         # Getting all the information out of the GUI
+        global searchTerm
+        searchTerm = var.get()
+        
         # Closing the window
         master.destroy()
-    global searchTerm
-    mySearch = StringVar(master)
+    var = StringVar(master)
+    options = ["a","b","c"]
+    var.set(options[0])
     Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
-    option = OptionMenu(master,mySearch,"a","b","c").grid(row=0,column=1,sticky=E,padx=10)
+    mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
-    searchTerm = mySearch.get()
+    
     mainloop()
     return searchTerm
 
@@ -180,7 +150,31 @@ def ModGUI(search):
 
     def close_window():
         # Getting all the information out of the GUI
+        e1_text = searchTerm # Task name information
+        e2_text = e2.get() # Due date information
+        e5_text = e5.get() # Hours in task information
+        
+        # Setting priority
+        if v1.get() == 1:
+            priority = "1"
+        elif v2.get() == 2:
+            priority = "2"
+        elif v3.get() == 3:
+            priority = "3"
+        elif v4.get() == 4:
+            priority = "4"
+        elif v5.get() == 5:
+            priority = "5"
+        else:
+            priority = None
 
+        # Setting check variable
+        if check.get() == 1:
+            checkYes = True
+        else:
+            checkYes = False
+        global modEvent
+        modEvent = [e1_text, e2_text, priority, e5_text, checkYes]
         # Setting check variable
         master.destroy()
 
@@ -189,27 +183,13 @@ def ModGUI(search):
         date1 = calendar1.getstrdate()
         if date1 is not "":
             date_1 = date1
-            
-    
-    def fnCalendar2():
-        calendar2 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        date2 = calendar2.getstrdate
-        if date2() is not "":
-            date_2 = date2()
-
-        
-    def fnCalendar3():
-        calendar3 = tkCalendar.tkCalendar(master, year, month, day, StringVar())
-        date3 = calendar3.getstrdate
-        if date3 is not "":
-            date_3 = date3()
 
     check = IntVar()
 
     ########## Task entry ##########
     Label(master,text="Enter Task:").grid(row=0,sticky=W)
     v = StringVar()
-    e1 = Entry(master,state=DISABLED, textvariable=v).grid(row=0,column=1,columnspan=5)
+    Entry(master,state=DISABLED, textvariable=v).grid(row=0,column=1,columnspan=5)
     v.set(searchTerm)
 
     ########## Due date entry ##########
@@ -241,22 +221,6 @@ def ModGUI(search):
     e5 = Entry(master,textvariable=e5_entry)
     e5.grid(row=3,column=1,columnspan=5)
 
-    ########## Requested start date entry ##########
-    Label(master,text="Requested Start Date:").grid(row=4,sticky=W)
-    e3_entry = StringVar()
-    e3 = Entry(master,textvariable=e3_entry)
-    e3.grid(row=4,column=1,columnspan=5)
-    cal2 = Button(master,height=height,width=width, image = photo,command=fnCalendar1).grid(row=4,column=5,sticky=W,padx=10)
-    e3.insert(0, 'mm/dd/yyyy')
-
-    ########## Requested end date ##########
-    Label(master,text="Requested End Date:").grid(row=5,sticky=W)
-    e4_entry = StringVar()
-    e4 = Entry(master,textvariable=e4_entry)
-    e4.grid(row=5,column=1,columnspan=5)
-    cal3 = Button(master,height=height,width=width, image=photo,command=fnCalendar3).grid(row=5,column=5,sticky=W,padx=10)
-    e4.insert(0, 'mm/dd/yyyy')
-
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
     Checkbutton(master,text="Submit another",variable=check,onvalue=1,offvalue=0).grid(row=6,sticky=W,padx=10)
@@ -273,9 +237,9 @@ def FirstGUI():
     def close_window():
         # Getting all the information out of the GUI
         global action
-        if v1 == 1:
+        if v1.get() == 1:
             action = "create"
-        elif v2 == 2:
+        elif v2.get() == 2:
             action = "modify"
         else:
             action = None
@@ -316,13 +280,13 @@ def main():
 
     while createYes == True:
         info = CreateGUI()
-        createYes = info[6]
+        createYes = info[4]
         myLife.addEvents(info)
 
     while modYes == True:
         search = SearchTaskGUI()
         info = ModGUI(search)
-        modYes = info[6]
+        modYes = info[4]
         myLife.modifyEvents(info)
 
     ########## Save Using Pickle ##########
