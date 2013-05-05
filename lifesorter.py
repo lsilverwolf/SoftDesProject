@@ -95,7 +95,12 @@ class Lifesorter:
         #6)sortingRank
         if index == -1 or index > 6:
             # Serch through every index of the events
-            return 0
+            sortEvents(self)
+            for n in range(0,len(self.events)):
+                for m in range(0, len(self.event[n])):
+                    curr = self.events[n][m]
+                    if curr == searchTerm:
+                        return self.events[n]
             
 
         else:
@@ -103,6 +108,9 @@ class Lifesorter:
             sortEvents(self)
             for n in range(0,len(self.events)):
                 curr = self.events[n][index]
+                if curr == searchTerm:
+                    return self.events[n]
+
 
 if __name__ == "__main__":
     ########## USE ME FOR DEBUGGING ##########
