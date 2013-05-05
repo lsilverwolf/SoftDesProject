@@ -5,19 +5,11 @@ from lifesorter import *
 
 import tkCalendar
 
-global e1_text, e2_text, e3_text, e4_text, e5_text, newEvent, modEvent, action, searchTerm
+global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm
 
 def CreateGUI():
     master = Tk()
     master.title("New Task")    # Title of the GUI
-
-
-
-    """class GUI():
-        def __init__(self, textFile = "schedule.txt"):
-
-            self.schedule = textFile
-    """
 
     # Getting the current date
     year = time.localtime()[0]
@@ -33,10 +25,8 @@ def CreateGUI():
         # Getting all the information out of the GUI
         e1_text = e1.get() # Task name information
         e2_text = e2.get() # Due date information
-        e5_text = e5.get() # Hours in task information
+        e3_text = e3.get() # Hours in task information
         
-        
-
         # Setting priority
         if v1.get() == 1:
             priority = "1"
@@ -57,7 +47,7 @@ def CreateGUI():
         else:
             checkYes = False
         global newEvent
-        newEvent = [e1_text, e2_text, priority, e5_text, checkYes]
+        newEvent = [e1_text, e2_text, priority, e3_text, checkYes]
         # Closing the window
         master.destroy()
 
@@ -100,9 +90,9 @@ def CreateGUI():
 
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
-    e5_entry = StringVar()
-    e5 = Entry(master,textvariable=e5_entry)
-    e5.grid(row=3,column=1,columnspan=5)
+    e3_entry = StringVar()
+    e3 = Entry(master,textvariable=e3_entry)
+    e3.grid(row=3,column=1,columnspan=5)
 
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
@@ -113,7 +103,7 @@ def CreateGUI():
     mainloop()
     return newEvent
 
-def SearchTaskGUI():
+def SearchTaskGUI(myLife):
     master = Tk()
     master.title("Modify Task")    # Title of the GUI
 
@@ -125,7 +115,7 @@ def SearchTaskGUI():
         # Closing the window
         master.destroy()
     var = StringVar(master)
-    options = ["a","b","c"]
+    options = 
     var.set(options[0])
     Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
     mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
@@ -152,7 +142,7 @@ def ModGUI(search):
         # Getting all the information out of the GUI
         e1_text = searchTerm # Task name information
         e2_text = e2.get() # Due date information
-        e5_text = e5.get() # Hours in task information
+        e3_text = e3.get() # Hours in task information
         
         # Setting priority
         if v1.get() == 1:
@@ -174,7 +164,7 @@ def ModGUI(search):
         else:
             checkYes = False
         global modEvent
-        modEvent = [e1_text, e2_text, priority, e5_text, checkYes]
+        modEvent = [e1_text, e2_text, priority, e3_text, checkYes]
         # Setting check variable
         master.destroy()
 
@@ -217,9 +207,9 @@ def ModGUI(search):
 
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
-    e5_entry = StringVar()
-    e5 = Entry(master,textvariable=e5_entry)
-    e5.grid(row=3,column=1,columnspan=5)
+    e3_entry = StringVar()
+    e3 = Entry(master,textvariable=e3_entry)
+    e3.grid(row=3,column=1,columnspan=5)
 
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
@@ -284,7 +274,7 @@ def main():
         myLife.addEvents(info)
 
     while modYes == True:
-        search = SearchTaskGUI()
+        search = SearchTaskGUI(myLife)
         info = ModGUI(search)
         modYes = info[4]
         myLife.modifyEvents(info)
