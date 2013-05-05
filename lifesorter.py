@@ -101,5 +101,5 @@ class Lifesorter:
             for n in range(0,len(self.events)):
                 curr = self.events[n][index]
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     ### USE ME FOR DEBUGGING ###
