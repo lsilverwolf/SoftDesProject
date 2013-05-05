@@ -107,7 +107,7 @@ class Lifesorter:
             # Serch through every index of the events
             self.sortEvents()
             for n in range(0,len(self.events)):
-                for m in range(0, len(self.event[n])):
+                for m in range(0, len(self.events[n])):
                     curr = self.events[n][m]
                     if curr == searchTerm:
                         return self.events[n]
@@ -127,12 +127,16 @@ if __name__ == "__main__":
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
     dueDate = datetime.date(2013,5,12)
-    testLifesorter = Lifesorter(["test1", dueDate, 1, 4, 0])
+    testLifesorter = Lifesorter(["ztest1", dueDate, 1, 4, 0])
 
     dueDate = datetime.date(2013,5,13)
-    testLifesorter.addEvents(["test2", dueDate, 2, 3, 0])
+    testLifesorter.addEvents(["ytest2", dueDate, 2, 3, 0])
 
     dueDate = datetime.date(2013,5,5)
-    testLifesorter.addEvents(["test3", dueDate, 3, 2, 0])
+    testLifesorter.addEvents(["xtest3", dueDate, 3, 2, 0])
+
+    dueDate = datetime.date(2013,5,5)
+    testLifesorter.addEvents(["wtest4", dueDate, 4, 1, 0])
     
-    print(testLifesorter.searchEvents("test1"))
+    print(testLifesorter.searchEvents("ztest1"))
+    print(testLifesorter.getEventNames())
