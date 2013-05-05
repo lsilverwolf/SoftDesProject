@@ -15,7 +15,7 @@ search finds a given string in any cell or the cell column selected
 
 """
 
-#event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
+#event = [task,due date,priority,hoursInTask,sortingRank]
 #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
 
 import datetime
@@ -31,7 +31,7 @@ class Lifesorter:
     def sortEvents(self):
         #sortEvents sorts the events based on the given priority
         self.prepareSort() #finds the rankings of each task
-        self.events.sort(key=lambda x: x[6]) #sorts based on the rankings
+        self.events.sort(key=lambda x: x[4]) #sorts based on the rankings
         return self.events
 
     def addEvents(self,newEvent):
@@ -64,6 +64,7 @@ class Lifesorter:
         for i in self.events:
             event = i
             eventIndex = self.events.index(i)
+            event[4] = 0
             priority = event[2] #user given priority
             dueDate = event[1]
             daysLeft = dueDate - todayDate #how many days until it's due
@@ -74,7 +75,7 @@ class Lifesorter:
                 sortingRank -= 4
             if daysLeft == 1:
                 sortingRank -= 2
-            event[6] += sortingRank #adds the rank to the current event
+            event[4] += sortingRank #adds the rank to the current event
             self.events[eventIndex] = event
         return self.events
 
@@ -95,8 +96,8 @@ class Lifesorter:
         #4)start date
         #5)end date
         #6)sortingRank
-        if index == -1 or index > 6:
-            # Serch through every index of the events
+        if index == -1 or index > 4:
+            # Search through every index of the events
             sortEvents(self)
             for n in range(0,len(self.events)):
                 for m in range(0, len(self.event[n])):
@@ -119,19 +120,13 @@ if __name__ == "__main__":
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
     dueDate = datetime.date(2013,5,12)
-    startDate = datetime.date(2013,5,10)
-    endDate = datetime.date(2013,5,12)
-    testLifesorter = Lifesorter(["test1", dueDate, 1, 4, startDate, endDate, 0])
+    testLifesorter = Lifesorter(["test1", dueDate, 1, 4, 0])
 
     dueDate = datetime.date(2013,5,13)
-    startDate = datetime.date(2013,5,11)
-    endDate = datetime.date(2013,5,13)
-    testLifesorter.addEvents(["test2", dueDate, 2, 3, startDate, endDate, 0])
+    testLifesorter.addEvents(["test2", dueDate, 2, 3, 0])
 
     dueDate = datetime.date(2013,5,5)
-    startDate = datetime.date(2013,5,12)
-    endDate = datetime.date(2013,5,14)
-    testLifesorter.addEvents(["test3", dueDate, 3, 2, startDate, endDate, 0])
+    testLifesorter.addEvents(["test3", dueDate, 3, 2, 0])
     
        
     print(testLifesorter.sortEvents())
