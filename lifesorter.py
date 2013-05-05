@@ -57,6 +57,15 @@ class Lifesorter:
         #getEvents returns the events list
         return self.events
 
+    def getEventNames(self):
+        #getEventNames returns a list of all event task names
+        tasks = []
+        for n in range(0,len(self.events)):
+            taskName = self.events[n][0]
+            tasks.append(taskName)
+        tasks.sort()
+        return tasks
+
     def prepareSort(self):
         #prepareSort finds the rankings of each event, based on due date and
         #priority level
@@ -93,12 +102,10 @@ class Lifesorter:
         #1)due date
         #2)priority 
         #3)hoursInTask
-        #4)start date
-        #5)end date
-        #6)sortingRank
+        #4)sortingRank
         if index == -1 or index > 4:
-            # Search through every index of the events
-            sortEvents(self)
+            # Serch through every index of the events
+            self.sortEvents()
             for n in range(0,len(self.events)):
                 for m in range(0, len(self.event[n])):
                     curr = self.events[n][m]
@@ -108,7 +115,7 @@ class Lifesorter:
 
         else:
             # Search through only the given index in the events
-            sortEvents(self)
+            self.sortEvents()
             for n in range(0,len(self.events)):
                 curr = self.events[n][index]
                 if curr == searchTerm:
@@ -128,5 +135,4 @@ if __name__ == "__main__":
     dueDate = datetime.date(2013,5,5)
     testLifesorter.addEvents(["test3", dueDate, 3, 2, 0])
     
-       
-    print(testLifesorter.sortEvents())
+    print(testLifesorter.searchEvents("test1"))
