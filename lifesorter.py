@@ -105,6 +105,7 @@ class Lifesorter:
         #3)hoursInTask
         #4)sortingRank
         matches = []
+        matchIndecies = []
         if index == -1 or index > 4:
             # Serch through every index of the events
             self.sortEvents()
@@ -112,7 +113,11 @@ class Lifesorter:
                 for m in range(0, len(self.events[n])):
                     curr = str(self.events[n][m])
                     if re.search(searchTerm, curr, re.IGNORECASE):
-                        matches.append(self.events[n])
+                        if n in matchIndecies:
+                            break
+                        else:
+                            matchIndecies.append(n)
+                            matches.append(self.events[n])
             
         else:
             # Search through only the given index in the events
@@ -132,14 +137,14 @@ if __name__ == "__main__":
     dueDate = datetime.date(2013,5,12)
     testLifesorter = Lifesorter(["ztest1", dueDate, 1, 4, 0])
 
-    dueDate = datetime.date(2014,5,13)
+    dueDate = datetime.date(2013,5,13)
     testLifesorter.addEvents(["ytask2", dueDate, 2, 3, 0])
 
-    dueDate = datetime.date(2013,5,5)
+    dueDate = datetime.date(2013,5,8)
     testLifesorter.addEvents(["xtest3", dueDate, 3, 2, 0])
 
-    dueDate = datetime.date(2012,5,5)
+    dueDate = datetime.date(2013,5,10)
     testLifesorter.addEvents(["wtask4", dueDate, 4, 1, 0])
     
-    print(testLifesorter.searchEvents("2013"))
+    print(testLifesorter.searchEvents("2"))
     print(testLifesorter.getEventNames())
