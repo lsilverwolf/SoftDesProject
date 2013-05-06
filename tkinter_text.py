@@ -261,6 +261,9 @@ def main():
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
 
     ########## Load Using Pickle ##########
+    createYes = False
+    modYes = False
+    rmYes = False
     try:
         prevInfo = pickle.load(open("save.p", "rb"))
     except:
@@ -272,14 +275,17 @@ def main():
     if myLife.events == [[]]:
         createYes = True
         modYes = False
+        rmYes = False
     else:
         action = FirstGUI()
         if action == "create":
             createYes = True
-            modYes = False
-        else:
-            createYes = False
+        elif action == "remove":
+            rmYes = True
+        elif action == "modify":
             modYes = True
+        else:
+            ################ LYRA
 
     while createYes == True:
         info = CreateGUI()
@@ -294,6 +300,8 @@ def main():
 
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
+    if myLifeEvents[0] == []:
+        myLifeEvents
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
