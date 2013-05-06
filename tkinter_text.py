@@ -231,6 +231,10 @@ def FirstGUI():
             action = "create"
         elif v2.get() == 2:
             action = "modify"
+        elif v3.get() == 3:
+            action = "display"
+        elif v4.get() == 4:
+            action = "remove"
         else:
             action = None
         # Closing the window
@@ -238,11 +242,15 @@ def FirstGUI():
 
     v1 = IntVar()
     v2 = IntVar()
+    v3 = IntVar()
+    v4 = IntVar()
 
     Label(master,text="Create New Event or Modify Existing Event?").grid(row=0,sticky=W)
     Checkbutton(master,text="Create",variable=v1,onvalue=1,offvalue=0).grid(row=1,column=0)
     Checkbutton(master,text="Modify",variable=v2,onvalue=2,offvalue=0).grid(row=1,column=1)
-    b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
+    Checkbutton(master,text="Display",variable=v3,onvalue=3,offvalue=0).grid(row=2,column=0)
+    Checkbutton(master,text="Remove",variable=v4,onvalue=4,offvalue=0).grid(row=2,column=1)
+    b1 = Button(master,text="Submit",command=close_window).grid(row=3,sticky=E,column=1,padx=10)
 
     mainloop()
     return action
@@ -253,10 +261,13 @@ def main():
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
 
     ########## Load Using Pickle ##########
+    createYes = False
+    modYes = False
+    rmYes = False
     try:
         prevInfo = pickle.load(open("save.p", "rb"))
     except:
-        prevInfo = []
+        prevInfo = None
         print("No stuff in file")
 
     myLife = Lifesorter(prevInfo)
@@ -264,14 +275,17 @@ def main():
     if myLife.events == [[]]:
         createYes = True
         modYes = False
+        rmYes = False
     else:
         action = FirstGUI()
         if action == "create":
             createYes = True
-            modYes = False
-        else:
-            createYes = False
+        if action == "remove":
+            rmYes = True
+        if action == "modify":
             modYes = True
+        if action == "display":
+            ################ LYRA
 
     while createYes == True:
         info = CreateGUI()
@@ -286,6 +300,8 @@ def main():
 
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
+    if myLifeEvents[0] == []:
+        
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
