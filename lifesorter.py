@@ -19,6 +19,7 @@ search finds a given string in any cell or the cell column selected
 #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
 
 import datetime
+import re
 
 class Lifesorter:
     def __init__(self,events=[]):
@@ -95,7 +96,7 @@ class Lifesorter:
 
     def searchEvents(self, searchTerm, index=-1):
         #Searches through the events to find the given searchTerm
-        #Returns the event list
+        #Returns the event list of any matching entries
         #if index is -1, the search function will search through every index
         #if index is specified, the search function will only look at that index of the events
         #0)task 
@@ -103,23 +104,25 @@ class Lifesorter:
         #2)priority 
         #3)hoursInTask
         #4)sortingRank
+        matches = []
         if index == -1 or index > 4:
             # Serch through every index of the events
             self.sortEvents()
             for n in range(0,len(self.events)):
                 for m in range(0, len(self.events[n])):
-                    curr = self.events[n][m]
-                    if curr == searchTerm:
-                        return self.events[n]
+                    curr = str(self.events[n][m])
+                    if re.search(searchTerm, curr, re.IGNORECASE):
+                        matches.append(self.events[n])
             
-
         else:
             # Search through only the given index in the events
             self.sortEvents()
             for n in range(0,len(self.events)):
-                curr = self.events[n][index]
-                if curr == searchTerm:
-                    return self.events[n]
+                curr = str(self.events[n][index])
+                if re.search(searchTerm, curr, re.IGNORECASE):
+                    matches.append(self.events[n])
+
+        return matches
 
 
 if __name__ == "__main__":
@@ -129,14 +132,14 @@ if __name__ == "__main__":
     dueDate = datetime.date(2013,5,12)
     testLifesorter = Lifesorter(["ztest1", dueDate, 1, 4, 0])
 
-    dueDate = datetime.date(2013,5,13)
-    testLifesorter.addEvents(["ytest2", dueDate, 2, 3, 0])
+    dueDate = datetime.date(2014,5,13)
+    testLifesorter.addEvents(["ytask2", dueDate, 2, 3, 0])
 
     dueDate = datetime.date(2013,5,5)
     testLifesorter.addEvents(["xtest3", dueDate, 3, 2, 0])
 
-    dueDate = datetime.date(2013,5,5)
-    testLifesorter.addEvents(["wtest4", dueDate, 4, 1, 0])
+    dueDate = datetime.date(2012,5,5)
+    testLifesorter.addEvents(["wtask4", dueDate, 4, 1, 0])
     
-    print(testLifesorter.searchEvents("ztest1"))
+    print(testLifesorter.searchEvents("2013"))
     print(testLifesorter.getEventNames())
