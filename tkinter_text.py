@@ -280,11 +280,11 @@ def main():
         action = FirstGUI()
         if action == "create":
             createYes = True
-        elif action == "remove":
+        if action == "remove":
             rmYes = True
-        elif action == "modify":
+        if action == "modify":
             modYes = True
-        else:
+        if action == "display":
             ################ LYRA
 
     while createYes == True:
@@ -301,7 +301,7 @@ def main():
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
     if myLifeEvents[0] == []:
-        myLifeEvents
+        
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
