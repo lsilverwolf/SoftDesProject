@@ -231,6 +231,10 @@ def FirstGUI():
             action = "create"
         elif v2.get() == 2:
             action = "modify"
+        elif v3.get() == 3:
+            action = "display"
+        elif v4.get() == 4:
+            action = "remove"
         else:
             action = None
         # Closing the window
@@ -238,11 +242,15 @@ def FirstGUI():
 
     v1 = IntVar()
     v2 = IntVar()
+    v3 = IntVar()
+    v4 = IntVar()
 
     Label(master,text="Create New Event or Modify Existing Event?").grid(row=0,sticky=W)
     Checkbutton(master,text="Create",variable=v1,onvalue=1,offvalue=0).grid(row=1,column=0)
     Checkbutton(master,text="Modify",variable=v2,onvalue=2,offvalue=0).grid(row=1,column=1)
-    b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
+    Checkbutton(master,text="Display",variable=v3,onvalue=3,offvalue=0).grid(row=2,column=0)
+    Checkbutton(master,text="Remove",variable=v4,onvalue=4,offvalue=0).grid(row=2,column=1)
+    b1 = Button(master,text="Submit",command=close_window).grid(row=3,sticky=E,column=1,padx=10)
 
     mainloop()
     return action
@@ -256,7 +264,7 @@ def main():
     try:
         prevInfo = pickle.load(open("save.p", "rb"))
     except:
-        prevInfo = []
+        prevInfo = None
         print("No stuff in file")
 
     myLife = Lifesorter(prevInfo)
