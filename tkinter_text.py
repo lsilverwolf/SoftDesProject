@@ -116,6 +116,8 @@ def SearchTaskGUI(myLife):
         master.destroy()
     var = StringVar(master)
     options = myLife.getEventNames()
+    print("mow")
+    print(myLife.getEventNames())
     var.set(options[0])
     print("options")
     print(options)
