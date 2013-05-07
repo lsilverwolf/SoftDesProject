@@ -24,7 +24,8 @@ import re
 class Lifesorter:
     def __init__(self,events=[]):
         self.events = []
-        self.events.append(events)
+        if events != []:
+            self.events.append(events)
 
     def __str__(self):
         return str(self.events)
@@ -135,7 +136,7 @@ if __name__ == "__main__":
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
     #Lifesorter has sort,add,remove,modify,get,prepareSort,getTop
     dueDate = datetime.date(2013,5,12)
-    testLifesorter = Lifesorter(["ztest1", dueDate, 1, 4, 0])
+    testLifesorter = Lifesorter() #["ztest1", dueDate, 1, 4, 0]
 
     dueDate = datetime.date(2013,5,13)
     testLifesorter.addEvents(["ytask2", dueDate, 2, 3, 0])
