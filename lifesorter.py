@@ -24,8 +24,12 @@ import re
 class Lifesorter:
     def __init__(self,events=[]):
         self.events = []
-        if events != []:
-            self.events.append(events)
+        if events != [] and events != [[]]:
+            eventString = str(events)
+            if eventString[0:2] == "[[":
+                self.events = events
+            else:
+                self.events.append(events)            
 
     def __str__(self):
         return str(self.events)

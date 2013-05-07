@@ -117,11 +117,7 @@ def SearchTaskGUI(myLife):
         master.destroy()
     var = StringVar(master)
     options = myLife.getEventNames()
-    print("mow")
-    print(myLife.getEventNames())
     var.set(options[0])
-    print("options")
-    print(options)
     Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
     mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
@@ -271,7 +267,7 @@ def main():
     modYes = False
     rmYes = False
     try:
-        prevInfo = pickle.load(open("save.p", "rb"))[0]
+        prevInfo = pickle.load(open("save.p", "rb"))
         myLife = Lifesorter(prevInfo)
     except:
         print("No stuff in file")
@@ -298,18 +294,19 @@ def main():
     while createYes == True:
         info = CreateGUI()
         createYes = info[4]
+        print("newEvent",info)
         myLife.addEvents(info)
+        print("myLife",myLife)
 
     while modYes == True:
         search = SearchTaskGUI(myLife)
         info = ModGUI(search)
         modYes = info[4]
         myLife.modifyEvents(info)
-
+    print("MOWWWWWW",myLife)
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
-    if myLifeEvents[0] == []:
-        myLife.removeEvents([])
+    print("myLifeEvents",myLifeEvents)
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
