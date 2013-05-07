@@ -257,6 +257,14 @@ def FirstGUI():
     mainloop()
     return action
     
+def displayEvents(taskText):
+    master = Tk()
+    master.title("Your To-Do List")    # Title of the GUI
+    
+    message = Message(master, text=taskText, width=600)
+    message.pack()
+    
+    mainloop()
 
 def main():
     #event = [task,due date,priority,hoursInTask,start date,end date,sortingRank]
@@ -286,27 +294,33 @@ def main():
         if action == "modify":
             modYes = True
         if action == "display":
-            print(myLife.getEvents())
             myLife.sortEvents()
             myLifeEvents = myLife.getEvents()
-            return None
+            taskText = ""
+            for n in range(len(myLifeEvents)):
+                month = str(myLifeEvents[n][1].month)
+                day = str(myLifeEvents[n][1].day)
+                year = str(myLifeEvents[n][1].year)
+                taskNumber = str(n+1)
+                eventName = str(myLifeEvents[n][0])
+                eventHours = str(myLifeEvents[n][3])
+                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+month+"/"+day+"/"+year+"\n\n"
+            displayEvents(taskText)
+            
+            
 
     while createYes == True:
         info = CreateGUI()
         createYes = info[4]
-        print("newEvent",info)
         myLife.addEvents(info)
-        print("myLife",myLife)
 
     while modYes == True:
         search = SearchTaskGUI(myLife)
         info = ModGUI(search)
         modYes = info[4]
         myLife.modifyEvents(info)
-    print("MOWWWWWW",myLife)
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
-    print("myLifeEvents",myLifeEvents)
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
