@@ -116,12 +116,10 @@ def SearchTaskGUI(myLife):
         # Closing the window
         master.destroy()
     var = StringVar(master)
-    print("I'm here")
-    print(myLife)
     options = myLife.getEventNames()
+    var.set(options[0])
     print("options")
     print(options)
-    var.set(options[0])
     Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
     mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
@@ -271,13 +269,13 @@ def main():
     modYes = False
     rmYes = False
     try:
-        prevInfo = pickle.load(open("save.p", "rb"))
+        prevInfo = pickle.load(open("save.p", "rb"))[0]
         myLife = Lifesorter(prevInfo)
     except:
         print("No stuff in file")
         myLife = Lifesorter()
 
-    if myLife.events == [[]]:
+    if myLife.events == []:
         createYes = True
         modYes = False
         rmYes = False
@@ -294,8 +292,6 @@ def main():
             myLife.sortEvents()
             myLifeEvents = myLife.getEvents()
             return None
-            
-            ################ LYRA
 
     while createYes == True:
         info = CreateGUI()
@@ -311,11 +307,7 @@ def main():
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
     if myLifeEvents[0] == []:
-        print("before")
-        print(myLife)
         myLife.removeEvents([])
-        print("after")
-        print(myLife)
     pickle.dump(myLifeEvents, open("save.p", "wb"))
 
 if __name__ == "__main__":
