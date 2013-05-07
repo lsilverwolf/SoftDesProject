@@ -25,6 +25,7 @@ def CreateGUI():
         # Getting all the information out of the GUI
         e1_text = e1.get() # Task name information
         e2_text = e2.get() # Due date information
+        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
@@ -47,7 +48,7 @@ def CreateGUI():
         else:
             checkYes = False
         global newEvent
-        newEvent = [e1_text, e2_text, priority, e3_text, checkYes]
+        newEvent = [e1_text, new_e2, priority, e3_text, checkYes]
         # Closing the window
         master.destroy()
 
@@ -146,6 +147,7 @@ def ModGUI(search):
         # Getting all the information out of the GUI
         e1_text = searchTerm # Task name information
         e2_text = e2.get() # Due date information
+        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
@@ -161,14 +163,14 @@ def ModGUI(search):
             priority = "5"
         else:
             priority = None
-
+            
         # Setting check variable
         if check.get() == 1:
             checkYes = True
         else:
             checkYes = False
         global modEvent
-        modEvent = [e1_text, e2_text, priority, e3_text, checkYes]
+        modEvent = [e1_text, new_e2, priority, e3_text, checkYes]
         # Setting check variable
         master.destroy()
 
@@ -288,7 +290,11 @@ def main():
         if action == "modify":
             modYes = True
         if action == "display":
+            print(myLife.getEvents())
+            myLife.sortEvents()
+            myLifeEvents = myLife.getEvents()
             return None
+            
             ################ LYRA
 
     while createYes == True:
