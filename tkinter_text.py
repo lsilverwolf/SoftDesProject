@@ -282,7 +282,7 @@ def displayEvents(taskText):
     master = Tk()
     master.title("Your To-Do List")    # Title of the GUI
     
-    message = Message(master, text=taskText, width=600)
+    message = Message(master, text=taskText, width=800)
     message.pack()
     
     mainloop()
@@ -324,7 +324,7 @@ def main():
                 eventName = str(myLifeEvents[n][0])
                 eventHours = str(myLifeEvents[n][3])
                 priority = str(myLifeEvents[n][2])
-                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+duedate+" (priority: "+ priority+")\n\n"
+                taskText = taskText+taskNumber+". "+ eventName+", which will take you approximately "+eventHours+" hours and is due on "+duedate+" (PRIORITY: "+ priority+")\n\n"
             displayEvents(taskText)
             
             
