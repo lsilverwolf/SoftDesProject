@@ -5,7 +5,7 @@ from lifesorter import *
 
 import tkCalendar
 
-global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm
+global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm, removeTerm
 
 def CreateGUI():
     master = Tk()
@@ -124,6 +124,26 @@ def SearchTaskGUI(myLife):
     
     mainloop()
     return searchTerm
+    
+def RemoveTaskGUI(myLife):
+    master = Tk()
+    master.title("Remove Task")    # Title of the GUI
+
+    def close_window():
+        # Getting all the information out of the GUI
+        global removeTerm
+        removeTerm = var.get()
+        
+        # Closing the window
+        master.destroy()
+    var = StringVar(master)
+    options = myLife.getEventNames()
+    var.set(options[0])
+    Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
+    mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
+    b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
+    mainloop()
+    return(removeTerm)
 
 def ModGUI(search):
     master = Tk()
@@ -319,6 +339,13 @@ def main():
         info = ModGUI(search)
         modYes = info[4]
         myLife.modifyEvents(info)
+        
+    if rmYes == True:
+        remove = RemoveTaskGUI(myLife)
+        for n in myLife.getEvents():
+            if n[0] == removeTerm:
+                myLife.removeEvents(n)
+        
     ########## Save Using Pickle ##########
     myLifeEvents = myLife.getEvents()
     pickle.dump(myLifeEvents, open("save.p", "wb"))
