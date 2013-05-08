@@ -5,7 +5,7 @@ from lifesorter import *
 
 import tkCalendar
 
-global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm, removeTerm
+global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm, removeTerm, eventToModify
 
 def CreateGUI():
     master = Tk()
@@ -210,7 +210,7 @@ def ModGUI(search):
     e2 = Entry(master,textvariable=e2_entry)
     cal1 = Button(master,height=height,width=width, image = photo,command=fnCalendar1).grid(row=1,column=5,sticky=W,padx=10)
     e2.grid(row=1,column=1,columnspan=5)
-    e2.insert(0, 'mm/dd/yyyy')
+    e2.insert(0, eventToModify[1].strftime("%m/%d/%Y"))
 
     ########## Priority entry ##########
     Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
@@ -232,6 +232,7 @@ def ModGUI(search):
     e3_entry = StringVar()
     e3 = Entry(master,textvariable=e3_entry)
     e3.grid(row=3,column=1,columnspan=5)
+    e3.insert(0, eventToModify[3])
 
     ########## Buttons ##########
     #Check button if you want to enter another task immediately
@@ -318,13 +319,11 @@ def main():
             myLifeEvents = myLife.getEvents()
             taskText = ""
             for n in range(len(myLifeEvents)):
-                month = str(myLifeEvents[n][1].month)
-                day = str(myLifeEvents[n][1].day)
-                year = str(myLifeEvents[n][1].year)
+                duedate = myLifeEvents[n][1].strftime("%m/%d/%Y")
                 taskNumber = str(n+1)
                 eventName = str(myLifeEvents[n][0])
                 eventHours = str(myLifeEvents[n][3])
-                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+month+"/"+day+"/"+year+"\n\n"
+                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+duedate+"\n\n"
             displayEvents(taskText)
             
             
@@ -336,6 +335,10 @@ def main():
 
     while modYes == True:
         search = SearchTaskGUI(myLife)
+        for n in myLife.getEvents():
+            if n[0] == search:
+                global eventToModify
+                eventToModify = n
         info = ModGUI(search)
         modYes = info[4]
         myLife.modifyEvents(info)
