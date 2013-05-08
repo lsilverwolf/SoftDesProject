@@ -323,7 +323,8 @@ def main():
                 taskNumber = str(n+1)
                 eventName = str(myLifeEvents[n][0])
                 eventHours = str(myLifeEvents[n][3])
-                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+duedate+"\n\n"
+                priority = str(myLifeEvents[n][2])
+                taskText = taskText+taskNumber+". "+ eventName+" will take you approximately "+eventHours+" hours and is due on "+duedate+" (priority: "+ priority+")\n\n"
             displayEvents(taskText)
             
             
