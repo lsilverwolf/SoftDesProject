@@ -20,6 +20,12 @@ README
     The folder WorkingPhotos contains a progression of photos demonstrating how 
     this application works and the various features it's capable of.
     
+    Finally, there are several text documents that contain more information about 
+    our project. Installation instruction and the user guide can be found in 
+    files named Installation.txt and UserGuide.txt, respectively. DesignGuide.txt 
+    contains more information about the actual workings of our application, and 
+    SelfEvaluation.txt contains our reflection on the project.
+    
 CONTACT
     
     If you have any problems, questions, ideas or suggestions, please contact us
