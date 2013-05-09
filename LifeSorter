@@ -28,7 +28,16 @@ def CreateGUI():
         # Getting all the information out of the GUI
         e1_text = e1.get() # Task name information
         e2_text = e2.get() # Due date information
-        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        if len(e2_text) == 10:
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        else:
+            if e2_text[1] == "/":
+                e2_text = "0"+e2_text
+            if e2_text[4]=="/":
+                e2_text = e2_text[:3]+"0"+e2_text[3:]
+            if len(e2_text) == 8:
+                e2_text = e2_text[:6]+"20"+e2_text[6:]
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
@@ -142,7 +151,7 @@ def RemoveTaskGUI(myLife):
     var = StringVar(master)
     options = myLife.getEventNames()
     var.set(options[0])
-    Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
+    Label(master,text="Search for task to remove:").grid(row=0,sticky=W)
     mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
     mainloop()
@@ -166,7 +175,16 @@ def ModGUI(search):
         # Getting all the information out of the GUI
         e1_text = searchTerm # Task name information
         e2_text = e2.get() # Due date information
-        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        if len(e2_text) == 10:
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        else:
+            if e2_text[1] == "/":
+                e2_text = "0"+e2_text
+            if e2_text[4]=="/":
+                e2_text = e2_text[:3]+"0"+e2_text[3:]
+            if len(e2_text) == 8:
+                e2_text = e2_text[:6]+"20"+e2_text[6:]
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
@@ -302,7 +320,6 @@ def main():
         prevInfo = pickle.load(open("save.p", "rb"))
         myLife = Lifesorter(prevInfo)
     except:
-        print("No stuff in file")
         myLife = Lifesorter()
 
     if myLife.events == []:
