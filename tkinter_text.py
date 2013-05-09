@@ -1,8 +1,14 @@
+"""
+
+A program to sort your to-do list based on priority and due date
+through a series of self-explanatory GUIs
+
+"""
+
 from tkinter import *
 import time
 import pickle
 from lifesorter import *
-
 import tkCalendar
 
 global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm, removeTerm, eventToModify
