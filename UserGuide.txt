@@ -15,10 +15,8 @@ USER GUIDE
     Unfortunately you cannot click on this calendar to autofill the box- it is 
     just for reference.
     
-    When checking a priority for your item, a value of 1 denotes the highest 
-    priority and a value of 5 denotes the lowest priority. If you choose more 
-    than one priority, the program will pick the one with the lowest value (aka 
-    the highest priority).
+    When choosing a priority for your item, a value of 1 denotes the highest 
+    priority and a value of 5 denotes the lowest priority.
     
     If you'd like to submit more than one event at once, there is a "Submit 
     Another" checkbox at the bottom of the GUI that you can select. If this is 

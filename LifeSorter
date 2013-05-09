@@ -40,19 +40,9 @@ def CreateGUI():
             new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
+        
         # Setting priority
-        if v1.get() == 1:
-            priority = "1"
-        elif v2.get() == 2:
-            priority = "2"
-        elif v3.get() == 3:
-            priority = "3"
-        elif v4.get() == 4:
-            priority = "4"
-        elif v5.get() == 5:
-            priority = "5"
-        else:
-            priority = None
+        priority = v1.get()
 
         # Setting check variable
         if check.get() == 1:
@@ -87,20 +77,16 @@ def CreateGUI():
     e2.insert(0, 'mm/dd/yyyy')
 
     ########## Priority entry ##########
-    Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
+    Label(master,text="Priority:").grid(row=2,sticky=W)
     # Initializing the priority variables
-    v1 = IntVar()
-    v2 = IntVar()
-    v3 = IntVar()
-    v4 = IntVar()
-    v5 = IntVar()
-    # Making the buttons for the priority
-    Checkbutton(master,text=str(1),variable=v1,onvalue=1,offvalue=0).grid(row=2,column=1)
-    Checkbutton(master,text=str(2),variable=v2,onvalue=2,offvalue=0).grid(row=2,column=2)
-    Checkbutton(master,text=str(3),variable=v3,onvalue=3,offvalue=0).grid(row=2,column=3)
-    Checkbutton(master,text=str(4),variable=v4,onvalue=4,offvalue=0).grid(row=2,column=4)
-    Checkbutton(master,text=str(5),variable=v5,onvalue=5,offvalue=0).grid(row=2,column=5)
 
+    v1 = StringVar(master)
+    options = [1,2,3,4,5]
+    v1.set(options[0])
+
+    # Making the buttons for the priority
+    OptionMenu(master,v1,*options).grid(row=2,column=2)
+    
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
     e3_entry = StringVar()
@@ -188,18 +174,7 @@ def ModGUI(search):
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
-        if v1.get() == 1:
-            priority = "1"
-        elif v2.get() == 2:
-            priority = "2"
-        elif v3.get() == 3:
-            priority = "3"
-        elif v4.get() == 4:
-            priority = "4"
-        elif v5.get() == 5:
-            priority = "5"
-        else:
-            priority = None
+        priority = v1.get()
             
         # Setting check variable
         if check.get() == 1:
@@ -234,19 +209,14 @@ def ModGUI(search):
     e2.insert(0, eventToModify[1].strftime("%m/%d/%Y"))
 
     ########## Priority entry ##########
-    Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
-    # Initializing the priority variables
-    v1 = IntVar()
-    v2 = IntVar()
-    v3 = IntVar()
-    v4 = IntVar()
-    v5 = IntVar()
+    Label(master,text="Priority:").grid(row=2,sticky=W)
+    
+    v1 = StringVar(master)
+    options = [1,2,3,4,5]
+    v1.set(options[0])
+
     # Making the buttons for the priority
-    Checkbutton(master,text=str(1),variable=v1,onvalue=1,offvalue=0).grid(row=2,column=1)
-    Checkbutton(master,text=str(2),variable=v2,onvalue=2,offvalue=0).grid(row=2,column=2)
-    Checkbutton(master,text=str(3),variable=v3,onvalue=3,offvalue=0).grid(row=2,column=3)
-    Checkbutton(master,text=str(4),variable=v4,onvalue=4,offvalue=0).grid(row=2,column=4)
-    Checkbutton(master,text=str(5),variable=v5,onvalue=5,offvalue=0).grid(row=2,column=5)
+    OptionMenu(master,v1,*options).grid(row=2,column=2)
 
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
