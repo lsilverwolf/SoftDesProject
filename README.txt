@@ -17,6 +17,9 @@ README
     window in the Create Event and Modify Event GUIs. The image file cal_icon.gif 
     is used to overlay the calendar icon on the calendar button.
     
+    The folder WorkingPhotos contains a progression of photos demonstrating how 
+    this application works and the various features it's capable of.
+    
 CONTACT
     
     If you have any problems, questions, ideas or suggestions, please contact us

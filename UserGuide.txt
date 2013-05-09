@@ -9,9 +9,13 @@ USER GUIDE
     the priority of the item, and enter the number of hour you expect the task to 
     take.
     
-    When entering the date of the event make sure that you follow the patter 
+    When entering the date of the event make sure that you follow the pattern 
     specified when you open the GUI (mm/dd/yyyy). If you've entered a single 
-    digit month or date, the program will not allow you to submit the item.
+    digit month or date, the program will not allow you to submit the item. You 
+    can also click the calendar button next to the due date box to see a current 
+    calendar if you need help remembering what day your event is due. 
+    Unfortunately you cannot click on this calendar to autofill the box- it is 
+    just for reference.
     
     When checking a priority for your item, a value of 1 denotes the highest 
     priority and a value of 5 denotes the lowest priority. If you choose more 
