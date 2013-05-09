@@ -1,0 +1,33 @@
+SELF-EVALUATION
+
+    Overall, this project was a fantastic learning experience for all of us. To 
+    start out, none of us had worked on software as a team before, and this 
+    project created a great opportunity for us to learn how to use version 
+    control software and divide up code so that everything got done. 
+    
+    For the first couple weeks of this project we didn't really know what we were 
+    doing, and the scope of our project was ridiculous for the experience level 
+    we had in the team. We had grand plans of posting to a user's Google 
+    calendar, yet we were attempting to pass back and forth the code on a Google 
+    document... Eventually, we decided to nix the Google calendar integration and 
+    we also figured out how to use github so that we could all have easy access
+    to the code base at any point in time. The most valuable part of this project 
+    to us was learning how to develop software with others, and how to use 
+    several new tools and modules we had never worked with before.
+    
+    The biggest thing that we could have improved in this project is error 
+    handling. It is a little bit fragile right now and throws errors into the 
+    terminal if the event creation GUI is closed rather than submitted or if the 
+    due date has a single digit month for instance. We probably could have made 
+    it easier to use by eliminating these errors or casing them to trigger 
+    messages to the user instructing him or her what to do differently to make 
+    the program work. We could have also made the program easier to use by giving 
+    it a keyboard shortcut or otherwise enabling it to be run without the 
+    terminal.
+    
+    We're especially proud of all the GUIs we created for the various features in 
+    our application. All of us learned to use tkinter during this project, and we 
+    think that it will probably be useful in the future. More importantly, 
+    though, we learned a lot about graphical user interfaces in general. Almost 
+    all software has a GUI somewhere, and it was really exciting to get out and 
+    create some of our own.
