@@ -1,13 +1,15 @@
 INSTALLATION GUIDE
 
     This is a python 3 application and requires python 3 to run. It also uses the 
-    tkinter module for python 3, which you may have to download and install prior 
+    tkinter module for python 3, which you will need to download and install prior 
     to using this application. Other modules used in this project include time, 
-    pickly, sys, re, and calendar, but these modules should be included with your 
+    pickle, sys, re, and calendar, but these modules should be included with your 
     python3 install.
     
-    To install this application on your computer make sure that you have the 
-    relevant modules listed above, including python 3, and then download our 
-    repository from github using the following link: https://github.com/
-    lsilverwolf/SoftDesProject.git. This application will work right out of the 
-    box and does not require any extra steps to make it work.
+    To install this application on your computer, make sure that you have installed 
+    the relevant modules listed above, including python 3, and then download our 
+    repository from github using the following link:
+    https://github.com/lsilverwolf/SoftDesProject.git.
+    
+    This application will work right out of the box and does not require any extra 
+    steps to run.

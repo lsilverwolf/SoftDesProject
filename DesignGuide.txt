@@ -11,13 +11,13 @@ DESIGN GUIDE
     from a drop-down list of their names, and one very similar to the Create 
     Event GUI that auto-populates with the previous information for that event. 
     The Remove Event GUI also displays a drop-down list of events names for the 
-    user to chose from, and the Display Events GUI spits out a message box 
-    containing the user's sorted to-do list.
+    user to chose from, and the Display Events GUI presents the user with a
+    message box containing the user's sorted to-do list.
     
     Once information is entered into any GUI, there is an accompanying function 
-    that collects the information for use in moving to another GUI, or to create 
-    a task for the user's to-do list.
-    
+    that collects and stores the information for later use, whether to move it to
+    another GUI or to create a new task in the user's to-do list.
+        
     The sorting of events takes place in the Lifesorter class contained in 
     sorter.py. The Lifesorter class includes methods for adding events, modifying 
     events, searching for an event, displaying all events, displaying all event 

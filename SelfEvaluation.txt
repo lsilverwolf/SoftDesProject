@@ -16,18 +16,17 @@ SELF-EVALUATION
     several new tools and modules we had never worked with before.
     
     The biggest thing that we could have improved in this project is error 
-    handling. It is a little bit fragile right now and throws errors into the 
-    terminal if the event creation GUI is closed rather than submitted or if the 
-    due date has a single digit month for instance. We probably could have made 
-    it easier to use by eliminating these errors or casing them to trigger 
-    messages to the user instructing him or her what to do differently to make 
-    the program work. We could have also made the program easier to use by giving 
-    it a keyboard shortcut or otherwise enabling it to be run without the 
-    terminal.
+    handling. Our main program is a little fragile right now and throws errors
+    into the terminal if a GUI is closed rather than submitted, for instance. We
+    probably could have made interacting with the project easier by eliminating
+    these errors or causing them to trigger more meaningful messages to the user
+    instructing him or her what to do differently to make the program work. We
+    could have also made the program easier to use by giving it a keyboard
+    shortcut or otherwise enabling it to be run without the terminal.
     
     We're especially proud of all the GUIs we created for the various features in 
     our application. All of us learned to use tkinter during this project, and we 
-    think that it will probably be useful in the future. More importantly, 
-    though, we learned a lot about graphical user interfaces in general. Almost 
-    all software has a GUI somewhere, and it was really exciting to get out and 
-    create some of our own.
+    know that this knowledge will be useful in the future. More importantly, 
+    though, we learned a lot about graphical user interfaces in general which
+    will prove valuable. Almost all software has a GUI somewhere, and it was
+    really exciting to create some of our own.
