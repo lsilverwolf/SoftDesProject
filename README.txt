@@ -7,7 +7,7 @@ HOW TO INSTALL AND RUN:
 
 For installation instructions,, please see Installation.txt.
 To run, type ./LifeSorter into the command line.
-For a userguide, please see UserGuide.txt.
+To be walked through our user interface, please see UserGuide.txt.
 
 -----------------------------------------------------------------------------
 
@@ -29,6 +29,12 @@ For further information, visit DesignGuide.txt.
 
 All of the files for this project are located in the main branch of the 
 github repository at https://github.com/lsilverwolf/SoftDesProject.git.
+
+------------------------------------------------------------------------------
+
+Documentation:
+
+To see screenshots of the functionality of our project, visit the folder called WorkingPhotos.
 
 ------------------------------------------------------------------------------
 
