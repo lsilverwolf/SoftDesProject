@@ -1,0 +1,42 @@
+USER GUIDE
+    
+    LifeSorter is very easy to use. Just run the .\LifeSorter from the command 
+    line of terminal to display the first GUI. 
+    
+    If you've never used it before, or if your to-do list currently has no items 
+    on it, you will first see the Create Event GUI. In this GUI you enter the 
+    item's name in the name field, the item's due date in the due field, check 
+    the priority of the item, and enter the number of hour you expect the task to 
+    take.
+    
+    When entering the date of the event, type in the date in the form mm/dd/yyyy. 
+    You can also click the calendar button next to the due date box to see a 
+    current calendar if you need help remembering what day your event is due. 
+    Unfortunately you cannot click on this calendar to autofill the box- it is 
+    just for reference.
+    
+    When choosing a priority for your item, a value of 1 denotes the highest 
+    priority and a value of 5 denotes the lowest priority.
+    
+    If you'd like to submit more than one event at once, there is a "Submit 
+    Another" checkbox at the bottom of the GUI that you can select. If this is 
+    selected, the program will automatically record your previous event and give 
+    you a fresh Create Event GUI.
+    
+    When you've entered one or more events into the program, you have many more 
+    options when running it. All of these events are stored in a pickle file in 
+    the same directory as your install of the program, so every time you open the 
+    application, all of your events are preserved and easily accessable.
+    
+    After you to-do list contains items, simply run .\LifeSorter from the 
+    terminal to choose Create, Display, Modify, or Remove for your events. Create 
+    enables you to continue adding events to your to-do list as outlined above. 
+    Display, shows you your sorted to-do list, so that you can see what you 
+    should be working on next as well as what you have already entered. Modify 
+    allows you to select any of your events based on the name of the event, and 
+    then it autofills the create event GUI with the information you previously 
+    entered for this event. Then you can edit the autofilled information to 
+    reflect the changes you want to make. Finally, Remove displays a drop-down 
+    list of all of the events in your to-do list so that you can choose which one 
+    you have just completed. Selecting an event in this GUI will remove it 
+    permanently from your to-do list.

@@ -1,0 +1,35 @@
+DESIGN GUIDE
+    
+    This project is divided into two basic sections, GUI creation and the sorting 
+    of events, that correspond to our two main files.
+    
+    The GUI creation script, LifeSorter, takes care of the creation of all the 
+    GUIs our program uses. All GUIs in this program are created using the python 
+    GUI creation software tkinter. The first GUI a user interacts with is the 
+    Create Event GUI that allows the user to input events. There are also two 
+    Modify Event GUIs, one which asks the user to select which event to modify 
+    from a drop-down list of their names, and one very similar to the Create 
+    Event GUI that auto-populates with the previous information for that event. 
+    The Remove Event GUI also displays a drop-down list of events names for the 
+    user to chose from, and the Display Events GUI spits out a message box 
+    containing the user's sorted to-do list.
+    
+    Once information is entered into any GUI, there is an accompanying function 
+    that collects the information for use in moving to another GUI, or to create 
+    a task for the user's to-do list.
+    
+    The sorting of events takes place in the Lifesorter class contained in 
+    sorter.py. The Lifesorter class includes methods for adding events, modifying 
+    events, searching for an event, displaying all events, displaying all event 
+    names, and displaying the event you should be working on currently. Each 
+    Lifesorter object is a list containing event sublists in the form [task name, 
+    due date, priority, hours in task, sorted rank]. These methods are used in 
+    our main function that is in the LifeSorter GUI creation script.
+    
+    The events are sorted based on a relatively simple sorting system. The 
+    program calculates the number of days until that task is due and sums it with 
+    the priority the user assigned that praticular task to get the sorted rank of 
+    the task. Finally, if the task is due today or tomorrow the program subtracts 
+    4 or 2, respectively, from the sorted rank. The objects are returned in 
+    assending sorted rank order, so the item with the lowest sorted rank is 
+    displayed at the top of the user's to-do list.

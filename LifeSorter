@@ -1,4 +1,4 @@
-<<<<<<< HEAD:tkinter_text.py
+#!/usr/bin/env python3
 """
 
 A program to sort your to-do list based on priority and due date
@@ -6,17 +6,9 @@ through a series of self-explanatory GUIs
 
 """
 
-from tkinter import *
-import time
-import pickle
-from lifesorter import *
-=======
-#!/usr/bin/env python3
-
 import time
 import pickle
 import sys
->>>>>>> f5bee480829ec526550fae3001b94c6ed2cf28af:LifeSorter
 import tkCalendar
 from sorter import *
 from tkinter import *
@@ -42,22 +34,21 @@ def CreateGUI():
         # Getting all the information out of the GUI
         e1_text = e1.get() # Task name information
         e2_text = e2.get() # Due date information
-        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        if len(e2_text) == 10:
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        else:
+            if e2_text[1] == "/":
+                e2_text = "0"+e2_text
+            if e2_text[4]=="/":
+                e2_text = e2_text[:3]+"0"+e2_text[3:]
+            if len(e2_text) == 8:
+                e2_text = e2_text[:6]+"20"+e2_text[6:]
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
+        
         # Setting priority
-        if v1.get() == 1:
-            priority = "1"
-        elif v2.get() == 2:
-            priority = "2"
-        elif v3.get() == 3:
-            priority = "3"
-        elif v4.get() == 4:
-            priority = "4"
-        elif v5.get() == 5:
-            priority = "5"
-        else:
-            priority = None
+        priority = v1.get()
 
         # Setting check variable
         if check.get() == 1:
@@ -92,20 +83,16 @@ def CreateGUI():
     e2.insert(0, 'mm/dd/yyyy')
 
     ########## Priority entry ##########
-    Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
+    Label(master,text="Priority:").grid(row=2,sticky=W)
     # Initializing the priority variables
-    v1 = IntVar()
-    v2 = IntVar()
-    v3 = IntVar()
-    v4 = IntVar()
-    v5 = IntVar()
-    # Making the buttons for the priority
-    Checkbutton(master,text=str(1),variable=v1,onvalue=1,offvalue=0).grid(row=2,column=1)
-    Checkbutton(master,text=str(2),variable=v2,onvalue=2,offvalue=0).grid(row=2,column=2)
-    Checkbutton(master,text=str(3),variable=v3,onvalue=3,offvalue=0).grid(row=2,column=3)
-    Checkbutton(master,text=str(4),variable=v4,onvalue=4,offvalue=0).grid(row=2,column=4)
-    Checkbutton(master,text=str(5),variable=v5,onvalue=5,offvalue=0).grid(row=2,column=5)
 
+    v1 = StringVar(master)
+    options = [1,2,3,4,5]
+    v1.set(options[0])
+
+    # Making the buttons for the priority
+    OptionMenu(master,v1,*options).grid(row=2,column=2)
+    
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
     e3_entry = StringVar()
@@ -156,7 +143,7 @@ def RemoveTaskGUI(myLife):
     var = StringVar(master)
     options = myLife.getEventNames()
     var.set(options[0])
-    Label(master,text="Search for task to modify:").grid(row=0,sticky=W)
+    Label(master,text="Search for task to remove:").grid(row=0,sticky=W)
     mySearch = OptionMenu(master,var,*options).grid(row=0,column=1,sticky=EW,padx=10)
     b1 = Button(master,text="Submit",command=close_window).grid(row=2,sticky=E,column=1,padx=10)
     mainloop()
@@ -180,22 +167,20 @@ def ModGUI(search):
         # Getting all the information out of the GUI
         e1_text = searchTerm # Task name information
         e2_text = e2.get() # Due date information
-        new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        if len(e2_text) == 10:
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
+        else:
+            if e2_text[1] == "/":
+                e2_text = "0"+e2_text
+            if e2_text[4]=="/":
+                e2_text = e2_text[:3]+"0"+e2_text[3:]
+            if len(e2_text) == 8:
+                e2_text = e2_text[:6]+"20"+e2_text[6:]
+            new_e2 = datetime.date(int(e2_text[6:]), int(e2_text[:2]), int(e2_text[3:5]))
         e3_text = e3.get() # Hours in task information
         
         # Setting priority
-        if v1.get() == 1:
-            priority = "1"
-        elif v2.get() == 2:
-            priority = "2"
-        elif v3.get() == 3:
-            priority = "3"
-        elif v4.get() == 4:
-            priority = "4"
-        elif v5.get() == 5:
-            priority = "5"
-        else:
-            priority = None
+        priority = v1.get()
             
         # Setting check variable
         if check.get() == 1:
@@ -230,19 +215,14 @@ def ModGUI(search):
     e2.insert(0, eventToModify[1].strftime("%m/%d/%Y"))
 
     ########## Priority entry ##########
-    Label(master,text="Priority (choose one):").grid(row=2,sticky=W)
-    # Initializing the priority variables
-    v1 = IntVar()
-    v2 = IntVar()
-    v3 = IntVar()
-    v4 = IntVar()
-    v5 = IntVar()
+    Label(master,text="Priority:").grid(row=2,sticky=W)
+    
+    v1 = StringVar(master)
+    options = [1,2,3,4,5]
+    v1.set(options[0])
+
     # Making the buttons for the priority
-    Checkbutton(master,text=str(1),variable=v1,onvalue=1,offvalue=0).grid(row=2,column=1)
-    Checkbutton(master,text=str(2),variable=v2,onvalue=2,offvalue=0).grid(row=2,column=2)
-    Checkbutton(master,text=str(3),variable=v3,onvalue=3,offvalue=0).grid(row=2,column=3)
-    Checkbutton(master,text=str(4),variable=v4,onvalue=4,offvalue=0).grid(row=2,column=4)
-    Checkbutton(master,text=str(5),variable=v5,onvalue=5,offvalue=0).grid(row=2,column=5)
+    OptionMenu(master,v1,*options).grid(row=2,column=2)
 
     ########## Hours in task entry ##########
     Label(master,text="Hours In Task:").grid(row=3,sticky=W)
@@ -316,7 +296,6 @@ def main():
         prevInfo = pickle.load(open("save.p", "rb"))
         myLife = Lifesorter(prevInfo)
     except:
-        print("No stuff in file")
         myLife = Lifesorter()
 
     if myLife.events == []:
