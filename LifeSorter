@@ -1,3 +1,4 @@
+<<<<<<< HEAD:tkinter_text.py
 """
 
 A program to sort your to-do list based on priority and due date
@@ -9,7 +10,17 @@ from tkinter import *
 import time
 import pickle
 from lifesorter import *
+=======
+#!/usr/bin/env python3
+
+import time
+import pickle
+import sys
+>>>>>>> f5bee480829ec526550fae3001b94c6ed2cf28af:LifeSorter
 import tkCalendar
+from sorter import *
+from tkinter import *
+
 
 global e1_text, e2_text, e3_text, newEvent, modEvent, action, searchTerm, removeTerm, eventToModify
 
